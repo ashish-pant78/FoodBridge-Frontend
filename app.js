@@ -167,7 +167,7 @@
   function saveDonations(items) { write(KEYS.donations, items); }
 
   // ===== BACKEND DATA SYNC (Step 2) =====
-  const API_BASE = window.FOODBRIDGE_API_BASE || 'http://localhost:5000/api';
+  const API_BASE = window.FOODBRIDGE_API_BASE || 'https://foodbridge-backend-udfx.onrender.com/api';
   function authHeaders(extra) {
     const h = Object.assign({}, extra || {});
     const token = localStorage.getItem('foodbridgeToken');
