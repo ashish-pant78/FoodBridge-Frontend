@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge - Post Food</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+
+/* ===============================
+   POST FOOD PAGE
+================================ */
+
+.post-food-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.page-heading h2 {
+  font-size: 23px;
+  margin: 0;
+  color: var(--text-dark);
+}
+
+.page-heading p {
+  color: var(--text-soft);
+  font-size: 13.5px;
+  margin-top: 7px;
+}
+
+.post-food-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+.post-card {
+  background: #fff;
+  border: 1px solid #e8eee9;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 5px 20px rgba(35, 72, 45, 0.05);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.card-title-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #eaf8ed;
+  color: #28a745;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.card-title span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 11.5px;
+  margin-top: 2px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: #29382e;
+}
+
+.required {
+  color: #e05252;
+}
+
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dfe8e1;
+  border-radius: 9px;
+  padding: 11px 12px;
+  font-family: Inter, sans-serif;
+  font-size: 12.5px;
+  color: #29382e;
+  background: #fff;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-control:focus {
+  border-color: #48b95a;
+  box-shadow: 0 0 0 3px rgba(72, 185, 90, 0.09);
+}
+
+textarea.form-control {
+  min-height: 90px;
+  resize: vertical;
+}
+
+select.form-control {
+  cursor: pointer;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8aa091;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.input-icon .form-control {
+  padding-right: 35px;
+}
+
+.food-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.food-type-option {
+  position: relative;
+}
+
+.food-type-option input {
+  display: none;
+}
+
+.food-type-option label {
+  border: 1px solid #e1e9e3;
+  border-radius: 9px;
+  padding: 11px 8px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #56665b;
+  display: block;
+  transition: 0.2s;
+}
+
+.food-type-option label i {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 5px;
+  color: #7d9183;
+}
+
+.food-type-option input:checked + label {
+  border-color: #42b653;
+  background: #effaf1;
+  color: #269b3a;
+}
+
+.food-type-option input:checked + label i {
+  color: #269b3a;
+}
+
+.upload-box {
+  border: 1.5px dashed #cbd9ce;
+  border-radius: 11px;
+  padding: 22px;
+  text-align: center;
+  background: #fafcfb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.upload-box:hover {
+  border-color: #48b95a;
+  background: #f5fbf6;
+}
+
+.upload-box i {
+  font-size: 27px;
+  color: #45b654;
+  margin-bottom: 7px;
+}
+
+.upload-box h4 {
+  font-size: 12.5px;
+  margin: 0 0 4px;
+}
+
+.upload-box p {
+  font-size: 10.5px;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.upload-box input {
+  display: none;
+}
+
+.upload-preview {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #3d7048;
+  display: none;
+}
+
+.form-divider {
+  border: 0;
+  border-top: 1px solid #edf1ee;
+  margin: 23px 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.cancel-btn {
+  border: 1px solid #dce5de;
+  background: #fff;
+  color: #56665b;
+  border-radius: 8px;
+  padding: 10px 17px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  border: 0;
+  background: #39aa4c;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 19px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: #2e963f;
+}
+
+
+/* ===============================
+   RIGHT SIDE
+================================ */
+
+.info-card {
+  background: #f4faf5;
+  border: 1px solid #dcefe0;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.info-card h3 {
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+
+.guideline {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.guideline:last-child {
+  margin-bottom: 0;
+}
+
+.guideline-icon {
+  min-width: 29px;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #dcf3e0;
+  color: #2da344;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+}
+
+.guideline-text b {
+  display: block;
+  font-size: 11.5px;
+  margin-bottom: 2px;
+}
+
+.guideline-text span {
+  display: block;
+  color: #718077;
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.tip-card {
+  background: #fff9ed;
+  border: 1px solid #f4e5bd;
+  border-radius: 15px;
+  padding: 18px;
+}
+
+.tip-card h3 {
+  font-size: 13px;
+  margin: 0 0 7px;
+  color: #805f1d;
+}
+
+.tip-card p {
+  color: #8a774d;
+  font-size: 10.8px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+
+/* ===============================
+   SUCCESS MESSAGE
+================================ */
+
+.success-message {
+  display: none;
+  background: #eaf8ed;
+  border: 1px solid #bfe6c6;
+  color: #287a36;
+  border-radius: 9px;
+  padding: 11px 13px;
+  margin-bottom: 18px;
+  font-size: 12px;
+}
+
+.success-message i {
+  margin-right: 7px;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .post-food-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .post-food-page {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .post-card {
+    padding: 17px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .food-type-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .page-heading {
+    display: block;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="dash-shell">
+
+  <!-- ===============================
+       SIDEBAR
+  ================================ -->
+
+  <aside class="dash-sidebar">
+
+    <a href="index.html"
+       onclick="location.href='index.html'"
+       class="logo"
+       style="margin-bottom:26px;padding:0 8px;">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+
+      <div>
+        <div class="logo-text">
+          Food<span>Bridge</span>
+        </div>
+
+        <div class="logo-tagline">
+          Share Food, Share Hope
+        </div>
+      </div>
+
+    </a>
+
+
+    <nav class="dash-nav">
+
+      <a href="dashboard.html"
+         onclick="location.href='dashboard.html';return false;">
+        <i class="fa-solid fa-house"></i>
+        Dashboard
+      </a>
+
+      <a href="dashboard-post-food.html"
+         onclick="location.href='dashboard-post-food.html';return false;"
+         class="active">
+        <i class="fa-solid fa-circle-plus"></i>
+        Post Food
+      </a>
+
+      <a href="dashboard-my-donations.html"
+         onclick="location.href='dashboard-my-donations.html';return false;">
+        <i class="fa-solid fa-box"></i>
+        My Donations
+      </a>
+
+      <a href="dashboard-requests.html"
+         onclick="location.href='dashboard-requests.html';return false;">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        Requests
+      </a>
+
+      <a href="dashboard-my-pickups.html"
+         onclick="location.href='dashboard-my-pickups.html';return false;">
+        <i class="fa-solid fa-truck"></i>
+        My Pickups
+      </a>
+
+      <a href="dashboard-messages.html"
+         onclick="location.href='dashboard-messages.html';return false;">
+
+        <i class="fa-solid fa-message"></i>
+        Messages
+
+        <span class="pill-status"
+              style="margin-left:auto;background:var(--red);color:#fff;">
+          2
+        </span>
+
+      </a>
+
+      <a href="dashboard-notifications.html"
+         onclick="location.href='dashboard-notifications.html';return false;">
+        <i class="fa-solid fa-bell"></i>
+        Notifications
+      </a>
+
+      <a href="dashboard-my-impact.html"
+         onclick="location.href='dashboard-my-impact.html';return false;">
+        <i class="fa-solid fa-chart-line"></i>
+        FoodBridge Impact
+      </a>
+
+      <a href="dashboard-available-food.html"
+         onclick="location.href='dashboard-available-food.html';return false;">
+        <i class="fa-solid fa-utensils"></i>
+        Available Food
+      </a>
+
+      <a href="dashboard-settings.html"
+         onclick="location.href='dashboard-settings.html';return false;">
+        <i class="fa-solid fa-gear"></i>
+        Settings
+      </a>
+
+      <a href="dashboard-help.html"
+         onclick="location.href='dashboard-help.html';return false;">
+        <i class="fa-solid fa-circle-question"></i>
+        Help & Support
+      </a>
+
+    </nav>
+
+
+    <div class="dash-help">
+
+      <i class="fa-solid fa-headset"></i>
+
+      <b style="font-size:13px;">
+        Need Help?
+      </b>
+
+      <p>
+        Our support team is here to help you.
+      </p>
+
+      <button class="btn btn-green btn-block btn-sm">
+        Contact Support
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ===============================
+       MAIN
+  ================================ -->
+
+  <main class="dash-main">
+
+
+    <!-- TOPBAR -->
+
+    <div class="dash-topbar">
+
+      <div class="dash-search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          id="postFoodSearch"
+          placeholder="Search for donations, requests, or NGOs..."
+        >
+
+      </div>
+
+
+      <div class="bell-wrap icon-btn" id="notificationBell">
+
+        <i class="fa-regular fa-bell"></i>
+
+        <span class="bell-dot">
+          3
+        </span>
+
+      </div>
+
+
+      <div class="dash-profile">
+
+        <div class="dash-avatar">
+          RS
+        </div>
+
+        <div>
+          <b>Riya Sharma</b>
+          <span>Restaurant</span>
+        </div>
+
+        <i
+          class="fa-solid fa-chevron-down"
+          style="color:var(--text-soft);font-size:11px;">
+        </i>
+
+      </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="dash-content">
+
+      <div class="post-food-page">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+          <div>
+
+            <h2>
+              Post Food
+            </h2>
+
+            <p>
+              Share your surplus food with people who need it.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div
+          class="success-message"
+          id="successMessage">
+
+          <i class="fa-solid fa-circle-check"></i>
+
+          Food donation posted successfully! NGOs can now view your donation.
+
+        </div>
+
+
+        <div class="post-food-layout">
+
+
+          <!-- ===============================
+               FORM
+          ================================ -->
+
+          <div class="post-card">
+
+            <div class="card-title">
+
+              <div class="card-title-icon">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Food Donation Details
+                </h3>
+
+                <span>
+                  Tell us about the food you want to donate
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <form id="foodDonationForm">
+
+
+              <!-- FOOD NAME -->
+
+              <div class="form-group">
+
+                <label>
+                  Food Name <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="foodName"
+                  placeholder="e.g. Rice, Dal & Vegetables"
+                  required>
+
+              </div>
+
+
+              <!-- FOOD TYPE -->
+
+              <div class="form-group">
+
+                <label>
+                  Food Type <span class="required">*</span>
+                </label>
+
+                <div class="food-type-grid">
+
+                  <div class="food-type-option">
+
+                    <input
+                      type="radio"
+                      id="veg"
+                      name="foodType"
+                      value="Vegetarian"
+                      required>
+
+                    <label for="veg">
+
+                      <i class="fa-solid fa-leaf"></i>
+                      Vegetarian
+
+                    </label>
+
+                  </div>
+
+
+                  <div class="food-type-option">
+
+                    <input
+                      type="radio"
+                      id="vegan"
+                      name="foodType"
+                      value="Vegan">
+
+                    <label for="vegan">
+
+                      <i class="fa-solid fa-seedling"></i>
+                      Vegan
+
+                    </label>
+
+                  </div>
+
+
+                  <div class="food-type-option">
+
+                    <input
+                      type="radio"
+                      id="nonveg"
+                      name="foodType"
+                      value="Non-Vegetarian">
+
+                    <label for="nonveg">
+
+                      <i class="fa-solid fa-drumstick-bite"></i>
+                      Non-Veg
+
+                    </label>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- QUANTITY + SERVINGS -->
+
+              <div class="form-row">
+
+                <div class="form-group">
+
+                  <label>
+                    Quantity <span class="required">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="quantity"
+                    placeholder="e.g. 10 kg"
+                    required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label>
+                    Estimated Servings
+                  </label>
+
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="servings"
+                    placeholder="e.g. 25"
+                    min="1">
+
+                </div>
+
+              </div>
+
+
+              <!-- PREPARED DATE + TIME -->
+
+              <div class="form-row">
+
+                <div class="form-group">
+
+                  <label>
+                    Prepared Date <span class="required">*</span>
+                  </label>
+
+                  <div class="input-icon">
+
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="preparedDate"
+                      required>
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                  </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label>
+                    Best Before <span class="required">*</span>
+                  </label>
+
+                  <div class="input-icon">
+
+                    <input
+                      type="datetime-local"
+                      class="form-control"
+                      id="bestBefore"
+                      required>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- DESCRIPTION -->
+
+              <div class="form-group">
+
+                <label>
+                  Food Description
+                </label>
+
+                <textarea
+                  class="form-control"
+                  id="description"
+                  placeholder="Add details about the food, ingredients, packaging, etc."></textarea>
+
+              </div>
+
+
+              <hr class="form-divider">
+
+
+              <!-- PICKUP LOCATION -->
+
+              <div class="card-title">
+
+                <div class="card-title-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+
+                  <h3>
+                    Pickup Information
+                  </h3>
+
+                  <span>
+                    Help NGOs know where to collect the food
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>
+                  Pickup Address <span class="required">*</span>
+                </label>
+
+                <textarea
+                  class="form-control"
+                  id="address"
+                  placeholder="Enter complete pickup address"
+                  required></textarea>
+
+              </div>
+
+
+              <div class="form-row">
+
+                <div class="form-group">
+
+                  <label>
+                    Pickup From <span class="required">*</span>
+                  </label>
+
+                  <div class="input-icon">
+
+                    <input
+                      type="time"
+                      class="form-control"
+                      id="pickupFrom"
+                      required>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                  </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label>
+                    Pickup Until <span class="required">*</span>
+                  </label>
+
+                  <div class="input-icon">
+
+                    <input
+                      type="time"
+                      class="form-control"
+                      id="pickupUntil"
+                      required>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- IMAGE -->
+
+              <div class="form-group">
+
+                <label>
+                  Food Image
+                </label>
+
+                <label class="upload-box" for="foodImage">
+
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                  <h4>
+                    Upload a photo of the food
+                  </h4>
+
+                  <p>
+                    JPG, PNG or WEBP • Max 5MB
+                  </p>
+
+                  <input
+                    type="file"
+                    id="foodImage"
+                    accept="image/png,image/jpeg,image/webp">
+
+                  <div
+                    class="upload-preview"
+                    id="uploadPreview">
+                  </div>
+
+                </label>
+
+              </div>
+
+
+              <!-- ACTIONS -->
+
+              <div class="form-actions">
+
+                <button
+                  type="button"
+                  class="cancel-btn"
+                  onclick="resetFoodForm()">
+
+                  Cancel
+
+                </button>
+
+
+                <button
+                  type="submit"
+                  class="submit-btn">
+
+                  <i class="fa-solid fa-paper-plane"></i>
+                  &nbsp;Post Food
+
+                </button>
+
+              </div>
+
+
+            </form>
+
+          </div>
+
+
+          <!-- ===============================
+               GUIDELINES
+          ================================ -->
+
+          <div>
+
+
+            <div class="info-card">
+
+              <h3>
+                <i
+                  class="fa-solid fa-circle-info"
+                  style="color:#32a348;margin-right:5px;">
+                </i>
+
+                Donation Guidelines
+              </h3>
+
+
+              <div class="guideline">
+
+                <div class="guideline-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <div class="guideline-text">
+
+                  <b>Freshness Matters</b>
+
+                  <span>
+                    Only donate food that is safe and within its best-before time.
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="guideline">
+
+                <div class="guideline-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+
+                <div class="guideline-text">
+
+                  <b>Pack Properly</b>
+
+                  <span>
+                    Use clean, sealed and suitable containers for food.
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="guideline">
+
+                <div class="guideline-icon">
+                  <i class="fa-solid fa-temperature-low"></i>
+                </div>
+
+                <div class="guideline-text">
+
+                  <b>Mention Storage</b>
+
+                  <span>
+                    Let NGOs know if the food needs refrigeration or special care.
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="guideline">
+
+                <div class="guideline-icon">
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div class="guideline-text">
+
+                  <b>Be Accurate</b>
+
+                  <span>
+                    Provide the correct quantity, location and pickup timings.
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="tip-card">
+
+              <h3>
+                <i class="fa-solid fa-lightbulb"></i>
+                Tip
+              </h3>
+
+              <p>
+                Adding a clear photo and accurate serving information
+                can help NGOs quickly understand your donation and
+                arrange a pickup.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===============================
+         FOOTER
+    ================================ -->
+
+    <footer class="footer">
+
+      <div class="wrap">
+
+        <div class="footer-grid">
+
+
+          <div class="footer-brand">
+
+            <div
+              class="logo-text"
+              style="color:#fff;">
+
+              Food<span style="color:#5cd66a;">
+                Bridge
+              </span>
+
+            </div>
+
+            <p>
+              Connecting surplus food from restaurants to those who need it the most.
+              Together, we can build a hunger-free world.
+            </p>
+
+
+            <div class="footer-socials">
+
+              <a href="#">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <h5>Quick Links</h5>
+
+            <ul>
+
+              <li>
+                <a href="index.html"
+                   onclick="location.href='index.html';return false;">
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a href="about.html"
+                   onclick="location.href='about.html';return false;">
+                  About Us
+                </a>
+              </li>
+
+              <li>
+                <a href="how-it-works.html"
+                   onclick="location.href='how-it-works.html';return false;">
+                  How It Works
+                </a>
+              </li>
+
+              <li>
+                <a href="available-food.html"
+                   onclick="location.href='available-food.html';return false;">
+                  Available Food
+                </a>
+              </li>
+
+              <li>
+                <a href="volunteer.html"
+                   onclick="location.href='volunteer.html';return false;">
+                  Volunteer
+                </a>
+              </li>
+
+              <li>
+                <a href="blog.html"
+                   onclick="location.href='blog.html';return false;">
+                  Blog
+                </a>
+              </li>
+
+              <li>
+                <a href="contact.html"
+                   onclick="location.href='contact.html';return false;">
+                  Contact
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div>
+
+            <h5>For Restaurants</h5>
+
+            <ul>
+
+              <li>
+                <a href="signup.html"
+                   onclick="location.href='signup.html';return false;">
+                  Register Your Restaurant
+                </a>
+              </li>
+
+              <li>
+                <a href="dashboard.html"
+                   onclick="location.href='dashboard.html';return false;">
+                  Restaurant Dashboard
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Donation Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Success Stories
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div>
+
+            <h5>For NGOs</h5>
+
+            <ul>
+
+              <li>
+                <a href="signup.html"
+                   onclick="location.href='signup.html';return false;">
+                  Register Your NGO
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  NGO Dashboard
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Food Safety Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Resources
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div>
+
+            <h5>For Volunteers</h5>
+
+            <ul>
+
+              <li>
+                <a href="volunteer.html"
+                   onclick="location.href='volunteer.html';return false;">
+                  Become a Volunteer
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Volunteer Dashboard
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Rewards
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div>
+
+            <h5>
+              Newsletter
+            </h5>
+
+            <p
+              style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;">
+
+              Subscribe for updates and stories.
+
+            </p>
+
+
+            <div class="footer-newsletter">
+
+              <input
+                placeholder="Enter your email">
+
+              <button
+                class="btn btn-green btn-block btn-sm"
+                onclick="handleNewsletterSubmit(event)">
+
+                Subscribe
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+          <span>
+            © 2026 FoodBridge. All rights reserved.
+          </span>
+
+          <span>
+            Privacy Policy &nbsp;|&nbsp;
+            Terms &amp; Conditions &nbsp;|&nbsp;
+            Food Safety Policy
+          </span>
+
+          <span>
+            Made with ❤️ for a better tomorrow
+          </span>
+
+        </div>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>

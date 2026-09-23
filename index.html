@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge — Share Food, Share Hope</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" onclick="location.href='index.html'" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+        <div>
+          <div class="logo-text">Food<span>Bridge</span></div>
+          <div class="logo-tagline">Share Food, Share Hope</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" onclick="location.href='index.html';return false;" class="active">Home</a><a href="about.html" onclick="location.href='about.html';return false;" class="">About Us</a><a href="how-it-works.html" onclick="location.href='how-it-works.html';return false;" class="">How It Works</a><a href="available-food.html" onclick="location.href='available-food.html';return false;" class="">Available Food</a><a href="volunteer.html" onclick="location.href='volunteer.html';return false;" class="">Volunteer</a><a href="blog.html" onclick="location.href='blog.html';return false;" class="">Blog</a><a href="contact.html" onclick="location.href='contact.html';return false;" class="">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="icon-btn" title="Toggle theme" onclick="toggleTheme()"><i class="fa-regular fa-moon"></i></button>
+        <button class="btn btn-outline btn-sm" onclick="location.href='login.html'"><i class="fa-regular fa-user"></i> Login</button>
+        <button class="btn btn-green btn-sm" onclick="location.href='signup.html'"><i class="fa-solid fa-user-plus"></i> Sign Up</button>
+        <button class="hamburger icon-btn" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" style="display:none;padding:10px 20px 18px;border-top:1px solid var(--border);">
+      <a href="index.html" onclick="location.href='index.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">Home</a><a href="about.html" onclick="location.href='about.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">About Us</a><a href="how-it-works.html" onclick="location.href='how-it-works.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">How It Works</a><a href="available-food.html" onclick="location.href='available-food.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">Available Food</a><a href="volunteer.html" onclick="location.href='volunteer.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">Volunteer</a><a href="blog.html" onclick="location.href='blog.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">Blog</a><a href="contact.html" onclick="location.href='contact.html';return false;" style="display:block;padding:10px 0;font-size:14px;font-weight:600;">Contact</a>
+    </div>
+  </header>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Don't Waste Food,<br><span class="accent">Feed Lives</span></h1>
+    <p>Connect with restaurants and donors to share surplus food with those who need it the most. Together, we can build a hunger-free world.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-green" onclick="location.href='dashboard.html'"><i class="fa-solid fa-shop"></i> Donate Food</button>
+      <button class="btn btn-white" onclick="location.href='available-food.html'"><i class="fa-solid fa-magnifying-glass"></i> Find Food</button>
+      <button class="btn btn-outline-light" onclick="location.href='volunteer.html'"><i class="fa-regular fa-handshake"></i> Become a Volunteer</button>
+    </div>
+    <div class="hero-trust">
+      <div class="avatars">
+        <img src="https://i.pravatar.cc/60?img=32"><img src="https://i.pravatar.cc/60?img=47"><img src="https://i.pravatar.cc/60?img=12">
+      </div>
+      Trusted by <b style="color:#5cd66a;">1000+</b> Restaurants, NGOs &amp; Volunteers
+    </div>
+    <div class="hero-badge"><i class="fa-solid fa-leaf" style="color:#5cd66a;"></i> Every meal you share can change a life 💚</div>
+  </div>
+</section>
+<div class="wrap"><div class="stats-bar"><div class="stat"><i class="fa-solid fa-bag-shopping"></i><div><div class="stat-num">1000+</div><div class="stat-label">Restaurants</div></div></div><div class="stat"><i class="fa-solid fa-people-group"></i><div><div class="stat-num">2500+</div><div class="stat-label">NGOs</div></div></div><div class="stat"><i class="fa-solid fa-utensils"></i><div><div class="stat-num">150K+</div><div class="stat-label">Meals Donated</div></div></div><div class="stat"><i class="fa-solid fa-leaf"></i><div><div class="stat-num">4.5 Tons</div><div class="stat-label">Food Waste Saved</div></div></div><div class="stat"><i class="fa-solid fa-earth-americas"></i><div><div class="stat-num">100K+</div><div class="stat-label">People Impacted</div></div></div></div></div>
+
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">How It Works</div>
+      <h2 class="section-title">Simple Steps, Big Impact</h2>
+      <p class="section-desc">Our platform makes it easy for anyone to donate food or find food. Here's how it works.</p>
+      <div class="steps-row" style="grid-template-columns:1fr;gap:14px;margin-top:30px;">
+        <div style="display:flex;align-items:center;gap:16px;"><div class="step-icon" style="margin:0;flex-shrink:0;"><i class="fa-solid fa-shop"></i></div><div><h4 style="font-size:14.5px;">Step 1</h4><p style="font-size:13px;color:var(--text-soft);">Restaurant or donor uploads surplus food</p></div></div><div style="display:flex;align-items:center;gap:16px;"><div class="step-icon" style="margin:0;flex-shrink:0;"><i class="fa-solid fa-bell"></i></div><div><h4 style="font-size:14.5px;">Step 2</h4><p style="font-size:13px;color:var(--text-soft);">Nearby NGOs are notified instantly</p></div></div><div style="display:flex;align-items:center;gap:16px;"><div class="step-icon" style="margin:0;flex-shrink:0;"><i class="fa-solid fa-truck"></i></div><div><h4 style="font-size:14.5px;">Step 3</h4><p style="font-size:13px;color:var(--text-soft);">Volunteer picks up the food</p></div></div><div style="display:flex;align-items:center;gap:16px;"><div class="step-icon" style="margin:0;flex-shrink:0;"><i class="fa-solid fa-people-group"></i></div><div><h4 style="font-size:14.5px;">Step 4</h4><p style="font-size:13px;color:var(--text-soft);">Food is delivered to those in need</p></div></div><div style="display:flex;align-items:center;gap:16px;"><div class="step-icon" style="margin:0;flex-shrink:0;"><i class="fa-solid fa-heart"></i></div><div><h4 style="font-size:14.5px;">Step 5</h4><p style="font-size:13px;color:var(--text-soft);">Impact is created & lives are changed</p></div></div>
+      </div>
+    </div>
+    <div style="background:var(--section-bg);border-radius:20px;padding:40px;text-align:center;">
+      <h3 style="font-size:22px;margin-bottom:6px;">Be the Reason<br>Someone <span style="color:var(--green);">Smiles</span> Today</h3>
+      <img src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?q=80&w=600&auto=format&fit=crop" style="border-radius:14px;margin:22px 0;height:220px;object-fit:cover;width:100%;">
+      <button class="btn btn-green" onclick="location.href='about.html'"><i class="fa-solid fa-play"></i> See Our Impact</button>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text" style="color:#fff;">Food<span style="color:#5cd66a;">Bridge</span></div>
+          <p>Connecting surplus food from restaurants to those who need it the most. Together, we can build a hunger-free world.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div><h5>Quick Links</h5><ul>
+          <li><a href="index.html" onclick="location.href='index.html';return false;">Home</a></li>
+          <li><a href="about.html" onclick="location.href='about.html';return false;">About Us</a></li>
+          <li><a href="how-it-works.html" onclick="location.href='how-it-works.html';return false;">How It Works</a></li>
+          <li><a href="available-food.html" onclick="location.href='available-food.html';return false;">Available Food</a></li>
+          <li><a href="volunteer.html" onclick="location.href='volunteer.html';return false;">Volunteer</a></li>
+          <li><a href="blog.html" onclick="location.href='blog.html';return false;">Blog</a></li>
+          <li><a href="contact.html" onclick="location.href='contact.html';return false;">Contact</a></li>
+        </ul></div>
+        <div><h5>For Restaurants</h5><ul>
+          <li><a href="signup.html" onclick="location.href='signup.html';return false;">Register Your Restaurant</a></li>
+          <li><a href="dashboard.html" onclick="location.href='dashboard.html';return false;">Restaurant Dashboard</a></li>
+          <li><a href="#">Donation Guidelines</a></li>
+          <li><a href="#">Success Stories</a></li>
+        </ul></div>
+        <div><h5>For NGOs</h5><ul>
+          <li><a href="signup.html" onclick="location.href='signup.html';return false;">Register Your NGO</a></li>
+          <li><a href="#">NGO Dashboard</a></li>
+          <li><a href="#">Food Safety Guidelines</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul></div>
+        <div><h5>For Volunteers</h5><ul>
+          <li><a href="volunteer.html" onclick="location.href='volunteer.html';return false;">Become a Volunteer</a></li>
+          <li><a href="#">Volunteer Dashboard</a></li>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">Rewards</a></li>
+        </ul></div>
+        <div>
+          <h5>Newsletter</h5>
+          <p style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;">Subscribe for updates and stories.</p>
+          <div class="footer-newsletter">
+            <input placeholder="Enter your email">
+            <button class="btn btn-green btn-block btn-sm" onclick="handleNewsletterSubmit(event)">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FoodBridge. All rights reserved.</span>
+        <span>Privacy Policy &nbsp;|&nbsp; Terms &amp; Conditions &nbsp;|&nbsp; Food Safety Policy</span>
+        <span>Made with ❤️ for a better tomorrow</span>
+      </div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+</body>
+</html>

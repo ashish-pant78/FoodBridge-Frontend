@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge - Messages</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="messages.css">
+</head>
+
+<body>
+
+<div class="dash-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar">
+
+    <a href="index.html" class="logo" style="margin-bottom:26px;padding:0 8px;">
+      <div class="logo-icon">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+
+      <div>
+        <div class="logo-text">Food<span>Bridge</span></div>
+        <div class="logo-tagline">Share Food, Share Hope</div>
+      </div>
+    </a>
+
+    <nav class="dash-nav">
+
+      <a href="dashboard.html">
+        <i class="fa-solid fa-house"></i> Dashboard
+      </a>
+
+      <a href="dashboard-post-food.html">
+        <i class="fa-solid fa-circle-plus"></i> Post Food
+      </a>
+
+      <a href="dashboard-my-donations.html">
+        <i class="fa-solid fa-box"></i> My Donations
+      </a>
+
+      <a href="dashboard-requests.html">
+        <i class="fa-solid fa-hand-holding-heart"></i> Requests
+      </a>
+
+      <a href="dashboard-my-pickups.html">
+        <i class="fa-solid fa-truck"></i> My Pickups
+      </a>
+
+      <a href="dashboard-messages.html" class="active">
+        <i class="fa-solid fa-message"></i>
+        Messages
+        <span class="pill-status" style="margin-left:auto;background:var(--red);color:#fff;">2</span>
+      </a>
+
+      <a href="dashboard-notifications.html">
+        <i class="fa-solid fa-bell"></i> Notifications
+      </a>
+
+      <a href="dashboard-my-impact.html">
+        <i class="fa-solid fa-chart-line"></i> FoodBridge Impact
+      </a>
+
+      <a href="dashboard-available-food.html">
+        <i class="fa-solid fa-utensils"></i> Available Food
+      </a>
+
+      <a href="dashboard-settings.html">
+        <i class="fa-solid fa-gear"></i> Settings
+      </a>
+
+      <a href="dashboard-help.html">
+        <i class="fa-solid fa-circle-question"></i> Help & Support
+      </a>
+
+    </nav>
+
+    <div class="dash-help">
+      <i class="fa-solid fa-headset"></i>
+      <b style="font-size:13px;">Need Help?</b>
+      <p>Our support team is here to help you.</p>
+      <button class="btn btn-green btn-block btn-sm">
+        Contact Support
+      </button>
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="dash-main">
+
+    <!-- TOPBAR -->
+    <div class="dash-topbar">
+
+      <div class="dash-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input placeholder="Search for donations, requests, or NGOs...">
+      </div>
+
+      <div class="bell-wrap icon-btn" id="notificationBell">
+        <i class="fa-regular fa-bell"></i>
+        <span class="bell-dot">3</span>
+      </div>
+
+      <div class="dash-profile">
+        <div class="dash-avatar">RS</div>
+
+        <div>
+          <b>Riya Sharma</b>
+          <span>Restaurant</span>
+        </div>
+
+        <i class="fa-solid fa-chevron-down"
+           style="color:var(--text-soft);font-size:11px;">
+        </i>
+      </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+    <div class="dash-content">
+
+      <div class="message-header">
+        <div>
+          <h2>Messages</h2>
+          <p>Communicate with NGOs, volunteers and FoodBridge support.</p>
+        </div>
+
+        <button class="new-message-btn" onclick="newMessage()">
+          <i class="fa-solid fa-pen"></i>
+          New Message
+        </button>
+      </div>
+
+
+      <div class="message-layout">
+
+        <!-- CONVERSATIONS -->
+        <div class="conversation-card">
+
+          <div class="conversation-top">
+            <div>
+              <h3>Conversations</h3>
+              <span>2 unread messages</span>
+            </div>
+
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+
+          <div class="message-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="conversationSearch"
+                   placeholder="Search conversations...">
+          </div>
+
+
+          <div class="conversation-list" id="conversationList">
+
+            <div class="conversation active"
+                 data-name="Hope Foundation"
+                 onclick="openChat('Hope Foundation','HF','#')">
+
+              <div class="conversation-avatar green">
+                HF
+              </div>
+
+              <div class="conversation-info">
+                <div>
+                  <b>Hope Foundation</b>
+                  <small>10:42 AM</small>
+                </div>
+
+                <span>Thank you for the food donation!</span>
+              </div>
+
+              <em>1</em>
+
+            </div>
+
+
+            <div class="conversation"
+                 data-name="Helping Hands NGO"
+                 onclick="openChat('Helping Hands NGO','HH','#')">
+
+              <div class="conversation-avatar blue">
+                HH
+              </div>
+
+              <div class="conversation-info">
+                <div>
+                  <b>Helping Hands NGO</b>
+                  <small>Yesterday</small>
+                </div>
+
+                <span>Can we arrange pickup for tomorrow?</span>
+              </div>
+
+              <em>1</em>
+
+            </div>
+
+
+            <div class="conversation"
+                 data-name="FoodBridge Support"
+                 onclick="openChat('FoodBridge Support','FB','#')">
+
+              <div class="conversation-avatar orange">
+                FB
+              </div>
+
+              <div class="conversation-info">
+                <div>
+                  <b>FoodBridge Support</b>
+                  <small>01 Sep</small>
+                </div>
+
+                <span>Your donation has been verified.</span>
+              </div>
+
+            </div>
+
+
+            <div class="conversation"
+                 data-name="Care & Share NGO"
+                 onclick="openChat('Care & Share NGO','CS','#')">
+
+              <div class="conversation-avatar purple">
+                CS
+              </div>
+
+              <div class="conversation-info">
+                <div>
+                  <b>Care & Share NGO</b>
+                  <small>29 Aug</small>
+                </div>
+
+                <span>We appreciate your support.</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CHAT -->
+        <div class="chat-card">
+
+          <div class="chat-header">
+
+            <div class="chat-person">
+
+              <div class="conversation-avatar green"
+                   id="chatAvatar">
+                HF
+              </div>
+
+              <div>
+                <b id="chatName">Hope Foundation</b>
+                <span>
+                  <i class="fa-solid fa-circle"></i>
+                  Online
+                </span>
+              </div>
+
+            </div>
+
+            <div class="chat-actions">
+              <button onclick="startCall()">
+                <i class="fa-solid fa-phone"></i>
+              </button>
+
+              <button>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+            </div>
+
+          </div>
+
+
+          <div class="chat-messages" id="chatMessages">
+
+            <div class="chat-date">
+              Today
+            </div>
+
+            <div class="message received">
+              <span>
+                Hello Riya! We received your food donation request.
+              </span>
+              <small>10:35 AM</small>
+            </div>
+
+            <div class="message sent">
+              <span>
+                Great! The food is packed and ready for pickup.
+              </span>
+              <small>10:38 AM</small>
+            </div>
+
+            <div class="message received">
+              <span>
+                Thank you for the food donation! Our volunteer will arrive shortly.
+              </span>
+              <small>10:42 AM</small>
+            </div>
+
+          </div>
+
+
+          <div class="chat-input">
+
+            <button title="Attach">
+              <i class="fa-solid fa-paperclip"></i>
+            </button>
+
+            <input id="messageInput"
+                   placeholder="Type your message..."
+                   onkeydown="handleMessageKey(event)">
+
+            <button class="send-btn"
+                    onclick="sendMessage()">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+      <div class="wrap">
+
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+
+            <div class="logo-text" style="color:#fff;">
+              Food<span style="color:#5cd66a;">Bridge</span>
+            </div>
+
+            <p>
+              Connecting surplus food from restaurants to those who need it
+              the most. Together, we can build a hunger-free world.
+            </p>
+
+            <div class="footer-socials">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+          </div>
+
+
+          <div>
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="available-food.html">Available Food</a></li>
+              <li><a href="volunteer.html">Volunteer</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+
+          <div>
+            <h5>For Restaurants</h5>
+            <ul>
+              <li><a href="signup.html">Register Your Restaurant</a></li>
+              <li><a href="dashboard.html">Restaurant Dashboard</a></li>
+              <li><a href="#">Donation Guidelines</a></li>
+              <li><a href="#">Success Stories</a></li>
+            </ul>
+          </div>
+
+
+          <div>
+            <h5>For NGOs</h5>
+            <ul>
+              <li><a href="signup.html">Register Your NGO</a></li>
+              <li><a href="#">NGO Dashboard</a></li>
+              <li><a href="#">Food Safety Guidelines</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+
+
+          <div>
+            <h5>For Volunteers</h5>
+            <ul>
+              <li><a href="volunteer.html">Become a Volunteer</a></li>
+              <li><a href="#">Volunteer Dashboard</a></li>
+              <li><a href="#">Guidelines</a></li>
+              <li><a href="#">Rewards</a></li>
+            </ul>
+          </div>
+
+
+          <div>
+
+            <h5>Newsletter</h5>
+
+            <p style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;">
+              Subscribe for updates and stories.
+            </p>
+
+            <div class="footer-newsletter">
+
+              <input placeholder="Enter your email">
+
+              <button class="btn btn-green btn-block btn-sm"
+                      onclick="handleNewsletterSubmit(event)">
+                Subscribe
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+          <span>© 2026 FoodBridge. All rights reserved.</span>
+          <span>
+            Privacy Policy &nbsp;|&nbsp;
+            Terms &amp; Conditions &nbsp;|&nbsp;
+            Food Safety Policy
+          </span>
+          <span>Made with ❤️ for a better tomorrow</span>
+        </div>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+</div>
+
+
+<!-- NEW MESSAGE MODAL -->
+
+<div class="message-modal" id="messageModal">
+
+  <div class="message-modal-box">
+
+    <button class="modal-close" onclick="closeMessage()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <h3>New Message</h3>
+    <p>Start a conversation with an organization.</p>
+
+    <label>Select Recipient</label>
+
+    <select id="recipient">
+      <option>Hope Foundation</option>
+      <option>Helping Hands NGO</option>
+      <option>FoodBridge Support</option>
+      <option>Care & Share NGO</option>
+    </select>
+
+    <label>Message</label>
+
+    <textarea id="newMessageText"
+              placeholder="Write your message..."></textarea>
+
+    <div class="new-message-actions">
+
+      <button class="cancel-message"
+              onclick="closeMessage()">
+        Cancel
+      </button>
+
+      <button class="send-new-message"
+              onclick="sendNewMessage()">
+        Send Message
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

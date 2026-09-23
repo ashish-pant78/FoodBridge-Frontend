@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodBridge Impact Dashboard</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Impact cards */
+
+        .impact-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-card h2 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .impact-card p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Chart */
+
+        .chart-container {
+            background: white;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 400px !important;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 800px) {
+
+            .impact-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .impact-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>FoodBridge Impact Dashboard</h1>
+
+
+    <!-- ============================== -->
+    <!-- IMPACT CARDS -->
+    <!-- ============================== -->
+
+    <div class="impact-container">
+
+        <div class="impact-card">
+            <h2 id="meals-donated">0</h2>
+            <p>Meals Donated</p>
+        </div>
+
+
+        <div class="impact-card">
+            <h2 id="meals-delivered">0</h2>
+            <p>Meals Delivered</p>
+        </div>
+
+
+        <div class="impact-card">
+            <h2 id="ngos-connected">0</h2>
+            <p>NGOs Connected</p>
+        </div>
+
+
+        <div class="impact-card">
+            <h2 id="people-served">0</h2>
+            <p>People Served</p>
+        </div>
+
+    </div>
+
+
+    <!-- ============================== -->
+    <!-- CHART -->
+    <!-- ============================== -->
+
+    <div class="chart-container">
+
+        <h2>FoodBridge Impact</h2>
+
+        <canvas id="impactChart"></canvas>
+
+    </div>
+
+
+    <!-- FoodBridge Impact JavaScript -->
+    <script src="impact.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FoodBridge Live Map</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+body{margin:0;background:#f5f8f5}.map-page{max-width:1200px;margin:0 auto;padding:24px}.map-card{background:#fff;border:1px solid #dfe8e1;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.06)}.map-head{padding:20px 22px;display:flex;justify-content:space-between;gap:15px;align-items:center}.map-head h2{margin:0 0 5px}.map-head p{margin:0;color:#718078;font-size:12px}.map-actions{display:flex;gap:8px;flex-wrap:wrap}#food-map{height:620px}.map-note{padding:12px 18px;font-size:11px;color:#718078;border-top:1px solid #e5ece7}.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}.legend span{font-size:11px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:#2f9e46}.dot.ngo{background:#7c4dff}.dot.vol{background:#ff9800}
+</style>
+</head>
+<body>
+<div class="map-page"><div class="map-card">
+<div class="map-head"><div><h2>FoodBridge Live Locations</h2><p>Real donation and delivery locations saved from the FoodBridge backend.</p><div class="legend"><span><i class="dot"></i>Restaurant / Food</span><span><i class="dot ngo"></i>NGO / Receiver</span><span><i class="dot vol"></i>Volunteer</span></div></div><div class="map-actions"><button class="btn btn-outline btn-sm" id="myLocation"><i class="fa-solid fa-location-crosshairs"></i> My Location</button><button class="btn btn-green btn-sm" onclick="history.back()">Back</button></div></div>
+<div id="food-map"></div><div class="map-note" id="mapStatus">Loading live locations…</div>
+</div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="map.js"></script>
+</body></html>

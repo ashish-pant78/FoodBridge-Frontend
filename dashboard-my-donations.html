@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Donations - FoodBridge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="my-donations.css">
+</head>
+
+<body>
+
+  <div class="dash-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+
+      <a href="index.html" onclick="location.href='index.html';return false;" class="logo"
+        style="margin-bottom:26px;padding:0 8px;">
+
+        <div class="logo-icon">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+
+        <div>
+          <div class="logo-text">Food<span>Bridge</span></div>
+          <div class="logo-tagline">Share Food, Share Hope</div>
+        </div>
+
+      </a>
+
+      <nav class="dash-nav">
+
+        <a href="dashboard.html">
+          <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+
+        <a href="dashboard-post-food.html">
+          <i class="fa-solid fa-circle-plus"></i> Post Food
+        </a>
+
+        <a href="dashboard-my-donations.html" class="active">
+          <i class="fa-solid fa-box"></i> My Donations
+        </a>
+
+        <a href="dashboard-requests.html">
+          <i class="fa-solid fa-hand-holding-heart"></i> Requests
+        </a>
+
+        <a href="dashboard-my-pickups.html">
+          <i class="fa-solid fa-truck"></i> My Pickups
+        </a>
+
+        <a href="dashboard-messages.html">
+          <i class="fa-solid fa-message"></i> Messages
+          <span class="pill-status" style="margin-left:auto;background:var(--red);color:#fff;">2</span>
+        </a>
+
+        <a href="dashboard-notifications.html">
+          <i class="fa-solid fa-bell"></i> Notifications
+        </a>
+
+        <a href="dashboard-my-impact.html">
+          <i class="fa-solid fa-chart-line"></i> FoodBridge Impact
+        </a>
+
+        <a href="dashboard-available-food.html">
+          <i class="fa-solid fa-utensils"></i> Available Food
+        </a>
+
+        <a href="dashboard-settings.html">
+          <i class="fa-solid fa-gear"></i> Settings
+        </a>
+
+        <a href="dashboard-help.html">
+          <i class="fa-solid fa-circle-question"></i> Help & Support
+        </a>
+
+      </nav>
+
+      <div class="dash-help">
+
+        <i class="fa-solid fa-headset"></i>
+
+        <b style="font-size:13px;">Need Help?</b>
+
+        <p>Our support team is here to help you.</p>
+
+        <button class="btn btn-green btn-block btn-sm">
+          Contact Support
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- TOPBAR -->
+      <div class="dash-topbar">
+
+        <div class="dash-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="donationSearch" placeholder="Search for donations, requests, or NGOs...">
+        </div>
+
+        <div class="bell-wrap icon-btn" id="notificationBell">
+          <i class="fa-regular fa-bell"></i>
+          <span class="bell-dot">3</span>
+        </div>
+
+        <div class="dash-profile">
+
+          <div class="dash-avatar">RS</div>
+
+          <div>
+            <b>Riya Sharma</b>
+            <span>Restaurant</span>
+          </div>
+
+          <i class="fa-solid fa-chevron-down" style="color:var(--text-soft);font-size:11px;"></i>
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTENT -->
+      <div class="dash-content">
+
+        <div class="donation-header">
+
+          <div>
+            <h2>My Donations</h2>
+            <p>Track and manage all your food donations.</p>
+          </div>
+
+          <a href="dashboard-post-food.html" class="btn btn-green">
+            <i class="fa-solid fa-plus"></i>
+            Post New Food
+          </a>
+
+        </div>
+
+
+        <!-- STATS -->
+        <div class="donation-stats">
+
+          <div class="donation-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-box"></i>
+            </div>
+            <div>
+              <span>Total Donations</span>
+              <strong id="totalDonations">8</strong>
+            </div>
+          </div>
+
+          <div class="donation-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <span>Pending</span>
+              <strong id="pendingDonations">2</strong>
+            </div>
+          </div>
+
+          <div class="donation-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+              <span>Completed</span>
+              <strong id="completedDonations">5</strong>
+            </div>
+          </div>
+
+          <div class="donation-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div>
+              <span>People Served</span>
+              <strong>124</strong>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- FILTER -->
+        <div class="donation-toolbar">
+
+          <div class="filter-buttons">
+
+            <button class="filter-btn active" data-filter="all">
+              All
+            </button>
+
+            <button class="filter-btn" data-filter="pending">
+              Pending
+            </button>
+
+            <button class="filter-btn" data-filter="accepted">
+              Accepted
+            </button>
+
+            <button class="filter-btn" data-filter="completed">
+              Completed
+            </button>
+
+          </div>
+
+          <select id="sortDonations">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+
+        </div>
+
+
+        <!-- DONATION LIST -->
+        <div class="donation-list" id="donationList">
+
+
+          <!-- DONATION 1 -->
+          <div class="donation-card" data-status="completed" data-name="Vegetable Biryani">
+
+            <div class="food-icon">
+              <i class="fa-solid fa-bowl-food"></i>
+            </div>
+
+            <div class="donation-info">
+
+              <div class="donation-title-row">
+
+                <h3>Vegetable Biryani</h3>
+
+                <span class="status-badge completed">
+                  Completed
+                </span>
+
+              </div>
+
+              <p>
+                <i class="fa-solid fa-box"></i>
+                15 kg &nbsp; • &nbsp; 45 servings
+              </p>
+
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                Posted on Aug 28, 2026
+              </p>
+
+              <p class="ngo-name">
+                <i class="fa-solid fa-building-ngo"></i>
+                Helping Hands NGO
+              </p>
+
+            </div>
+
+            <div class="donation-action">
+
+              <button onclick="viewDonation('Vegetable Biryani')">
+                View Details
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- DONATION 2 -->
+          <div class="donation-card" data-status="accepted" data-name="Paneer Rice">
+
+            <div class="food-icon">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+
+            <div class="donation-info">
+
+              <div class="donation-title-row">
+
+                <h3>Paneer Rice</h3>
+
+                <span class="status-badge accepted">
+                  Accepted
+                </span>
+
+              </div>
+
+              <p>
+                <i class="fa-solid fa-box"></i>
+                10 kg &nbsp; • &nbsp; 30 servings
+              </p>
+
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                Posted on Sep 1, 2026
+              </p>
+
+              <p class="ngo-name">
+                <i class="fa-solid fa-building-ngo"></i>
+                Hope Foundation
+              </p>
+
+            </div>
+
+            <div class="donation-action">
+
+              <button onclick="viewDonation('Paneer Rice')">
+                View Details
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- DONATION 3 -->
+          <div class="donation-card" data-status="pending" data-name="Fresh Chapati">
+
+            <div class="food-icon">
+              <i class="fa-solid fa-bread-slice"></i>
+            </div>
+
+            <div class="donation-info">
+
+              <div class="donation-title-row">
+
+                <h3>Fresh Chapati</h3>
+
+                <span class="status-badge pending">
+                  Pending
+                </span>
+
+              </div>
+
+              <p>
+                <i class="fa-solid fa-box"></i>
+                8 kg &nbsp; • &nbsp; 40 servings
+              </p>
+
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                Posted on Sep 3, 2026
+              </p>
+
+              <p class="ngo-name">
+                <i class="fa-solid fa-location-dot"></i>
+                Waiting for NGO request
+              </p>
+
+            </div>
+
+            <div class="donation-action">
+
+              <button onclick="viewDonation('Fresh Chapati')">
+                View Details
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- DONATION 4 -->
+          <div class="donation-card" data-status="completed" data-name="Dal Tadka">
+
+            <div class="food-icon">
+              <i class="fa-solid fa-bowl-rice"></i>
+            </div>
+
+            <div class="donation-info">
+
+              <div class="donation-title-row">
+
+                <h3>Dal Tadka & Rice</h3>
+
+                <span class="status-badge completed">
+                  Completed
+                </span>
+
+              </div>
+
+              <p>
+                <i class="fa-solid fa-box"></i>
+                12 kg &nbsp; • &nbsp; 36 servings
+              </p>
+
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                Posted on Aug 24, 2026
+              </p>
+
+              <p class="ngo-name">
+                <i class="fa-solid fa-building-ngo"></i>
+                Care India NGO
+              </p>
+
+            </div>
+
+            <div class="donation-action">
+
+              <button onclick="viewDonation('Dal Tadka & Rice')">
+                View Details
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- DONATION 5 -->
+          <div class="donation-card" data-status="pending" data-name="Mixed Vegetable Curry">
+
+            <div class="food-icon">
+              <i class="fa-solid fa-carrot"></i>
+            </div>
+
+            <div class="donation-info">
+
+              <div class="donation-title-row">
+
+                <h3>Mixed Vegetable Curry</h3>
+
+                <span class="status-badge pending">
+                  Pending
+                </span>
+
+              </div>
+
+              <p>
+                <i class="fa-solid fa-box"></i>
+                6 kg &nbsp; • &nbsp; 20 servings
+              </p>
+
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                Posted on Sep 4, 2026
+              </p>
+
+              <p class="ngo-name">
+                <i class="fa-solid fa-location-dot"></i>
+                Waiting for NGO request
+              </p>
+
+            </div>
+
+            <div class="donation-action">
+
+              <button onclick="viewDonation('Mixed Vegetable Curry')">
+                View Details
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div id="noDonations" class="no-donations">
+          <i class="fa-solid fa-box-open"></i>
+          <p>No donations found.</p>
+        </div>
+
+      </div>
+
+
+      <!-- FOOTER -->
+      <footer class="footer">
+
+        <div class="wrap">
+
+          <div class="footer-grid">
+
+            <div class="footer-brand">
+
+              <div class="logo-text" style="color:#fff;">
+                Food<span style="color:#5cd66a;">Bridge</span>
+              </div>
+
+              <p>
+                Connecting surplus food from restaurants to those who need it the most.
+                Together, we can build a hunger-free world.
+              </p>
+
+              <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              </div>
+
+            </div>
+
+
+            <div>
+              <h5>Quick Links</h5>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="available-food.html">Available Food</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+
+
+            <div>
+              <h5>For Restaurants</h5>
+              <ul>
+                <li><a href="signup.html">Register Your Restaurant</a></li>
+                <li><a href="dashboard.html">Restaurant Dashboard</a></li>
+                <li><a href="#">Donation Guidelines</a></li>
+                <li><a href="#">Success Stories</a></li>
+              </ul>
+            </div>
+
+
+            <div>
+              <h5>For NGOs</h5>
+              <ul>
+                <li><a href="signup.html">Register Your NGO</a></li>
+                <li><a href="#">NGO Dashboard</a></li>
+                <li><a href="#">Food Safety Guidelines</a></li>
+                <li><a href="#">Resources</a></li>
+              </ul>
+            </div>
+
+
+            <div>
+              <h5>For Volunteers</h5>
+              <ul>
+                <li><a href="volunteer.html">Become a Volunteer</a></li>
+                <li><a href="#">Volunteer Dashboard</a></li>
+                <li><a href="#">Guidelines</a></li>
+                <li><a href="#">Rewards</a></li>
+              </ul>
+            </div>
+
+
+            <div>
+
+              <h5>Newsletter</h5>
+
+              <p style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;">
+                Subscribe for updates and stories.
+              </p>
+
+              <div class="footer-newsletter">
+
+                <input placeholder="Enter your email">
+
+                <button class="btn btn-green btn-block btn-sm">
+                  Subscribe
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="footer-bottom">
+
+            <span>© 2026 FoodBridge. All rights reserved.</span>
+
+            <span>
+              Privacy Policy &nbsp;|&nbsp;
+              Terms &amp; Conditions &nbsp;|&nbsp;
+              Food Safety Policy
+            </span>
+
+            <span>Made with ❤️ for a better tomorrow</span>
+
+          </div>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>

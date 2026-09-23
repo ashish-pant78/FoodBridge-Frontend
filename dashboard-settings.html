@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FoodBridge - Settings</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="settings.css">
+
+</head>
+
+<body>
+
+<div class="dash-shell">
+
+  <!-- SIDEBAR -->
+
+  <aside class="dash-sidebar">
+
+    <a href="index.html"
+       class="logo"
+       style="margin-bottom:26px;padding:0 8px;">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+
+      <div>
+        <div class="logo-text">
+          Food<span>Bridge</span>
+        </div>
+
+        <div class="logo-tagline">
+          Share Food, Share Hope
+        </div>
+      </div>
+
+    </a>
+
+
+    <nav class="dash-nav">
+
+      <a href="dashboard.html">
+        <i class="fa-solid fa-house"></i>
+        Dashboard
+      </a>
+
+      <a href="dashboard-post-food.html">
+        <i class="fa-solid fa-circle-plus"></i>
+        Post Food
+      </a>
+
+      <a href="dashboard-my-donations.html">
+        <i class="fa-solid fa-box"></i>
+        My Donations
+      </a>
+
+      <a href="dashboard-requests.html">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        Requests
+      </a>
+
+      <a href="dashboard-my-pickups.html">
+        <i class="fa-solid fa-truck"></i>
+        My Pickups
+      </a>
+
+      <a href="dashboard-messages.html">
+
+        <i class="fa-solid fa-message"></i>
+
+        Messages
+
+        <span class="pill-status"
+              style="margin-left:auto;background:var(--red);color:#fff;">
+          2
+        </span>
+
+      </a>
+
+      <a href="dashboard-notifications.html">
+
+        <i class="fa-solid fa-bell"></i>
+
+        Notifications
+
+      </a>
+
+      <a href="dashboard-my-impact.html">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        FoodBridge Impact
+
+      </a>
+
+      <a href="dashboard-available-food.html">
+
+        <i class="fa-solid fa-utensils"></i>
+
+        Available Food
+
+      </a>
+
+      <a href="dashboard-settings.html" class="active">
+
+        <i class="fa-solid fa-gear"></i>
+
+        Settings
+
+      </a>
+
+      <a href="dashboard-help.html">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+        Help & Support
+
+      </a>
+
+    </nav>
+
+
+    <!-- HELP BOX -->
+
+    <div class="dash-help">
+
+      <i class="fa-solid fa-headset"></i>
+
+      <b style="font-size:13px;">
+        Need Help?
+      </b>
+
+      <p>
+        Our support team is here to help you.
+      </p>
+
+      <button class="btn btn-green btn-block btn-sm">
+        Contact Support
+      </button>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- MAIN -->
+
+  <main class="dash-main">
+
+
+    <!-- TOPBAR -->
+
+    <div class="dash-topbar">
+
+      <div class="dash-search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          placeholder="Search for donations, requests, or NGOs..."
+        >
+
+      </div>
+
+
+      <div class="bell-wrap icon-btn" id="notificationBell">
+
+        <i class="fa-regular fa-bell"></i>
+
+        <span class="bell-dot">
+          3
+        </span>
+
+      </div>
+
+
+      <div class="dash-profile">
+
+        <div class="dash-avatar">
+          RS
+        </div>
+
+        <div>
+
+          <b>
+            Riya Sharma
+          </b>
+
+          <span>
+            Restaurant
+          </span>
+
+        </div>
+
+        <i class="fa-solid fa-chevron-down"
+           style="color:var(--text-soft);font-size:11px;">
+        </i>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CONTENT -->
+
+    <div class="dash-content">
+
+
+      <div class="settings-header">
+
+        <div>
+
+          <h2>
+            Settings
+          </h2>
+
+          <p>
+            Manage your account and preferences.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="settings-layout">
+
+
+        <!-- SETTINGS MENU -->
+
+        <div class="settings-menu">
+
+
+          <button
+            class="settings-tab active"
+            onclick="showSetting('profile', this)"
+          >
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>
+
+              <b>
+                Profile
+              </b>
+
+              <small>
+                Personal information
+              </small>
+
+            </span>
+
+          </button>
+
+
+
+          <button
+            class="settings-tab"
+            onclick="showSetting('notifications', this)"
+          >
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span>
+
+              <b>
+                Notifications
+              </b>
+
+              <small>
+                Manage alerts
+              </small>
+
+            </span>
+
+          </button>
+
+
+
+          <button
+            class="settings-tab"
+            onclick="showSetting('security', this)"
+          >
+
+            <i class="fa-solid fa-lock"></i>
+
+            <span>
+
+              <b>
+                Security
+              </b>
+
+              <small>
+                Password & account
+              </small>
+
+            </span>
+
+          </button>
+
+
+
+          <button
+            class="settings-tab"
+            onclick="showSetting('preferences', this)"
+          >
+
+            <i class="fa-solid fa-sliders"></i>
+
+            <span>
+
+              <b>
+                Preferences
+              </b>
+
+              <small>
+                App preferences
+              </small>
+
+            </span>
+
+          </button>
+
+
+        </div>
+
+
+
+        <!-- SETTINGS PANEL -->
+
+        <div class="settings-panel">
+
+
+          <!-- PROFILE -->
+
+          <section
+            id="profile"
+            class="setting-section active"
+          >
+
+
+            <div class="section-title">
+
+              <h3>
+                Profile Information
+              </h3>
+
+              <p>
+                Update your personal and restaurant information.
+              </p>
+
+            </div>
+
+
+
+            <!-- PROFILE PHOTO -->
+
+            <div class="profile-top">
+
+
+              <div
+                class="large-avatar"
+                id="profileAvatar"
+              >
+                RS
+              </div>
+
+
+              <div>
+
+                <h4>
+                  Riya Sharma
+                </h4>
+
+                <p>
+                  Restaurant Account
+                </p>
+
+
+                <!-- HIDDEN FILE INPUT -->
+
+                <input
+                  type="file"
+                  id="photoInput"
+                  accept="image/*"
+                  hidden
+                  onchange="changeProfilePhoto(event)"
+                >
+
+
+                <!-- CHANGE PHOTO BUTTON -->
+
+                <button
+                  type="button"
+                  class="change-photo"
+                  onclick="document.getElementById('photoInput').click()"
+                >
+
+                  <i class="fa-solid fa-camera"></i>
+
+                  Change Photo
+
+                </button>
+
+
+              </div>
+
+            </div>
+
+
+
+            <!-- PROFILE FORM -->
+
+            <div class="settings-form">
+
+
+              <div class="form-group">
+
+                <label>
+                  Full Name
+                </label>
+
+                <input
+                  id="fullName"
+                  type="text"
+                  value="Riya Sharma"
+                >
+
+              </div>
+
+
+
+              <div class="form-group">
+
+                <label>
+                  Email Address
+                </label>
+
+                <input
+                  id="email"
+                  type="email"
+                  value="riya@example.com"
+                >
+
+              </div>
+
+
+
+              <div class="form-group">
+
+                <label>
+                  Phone Number
+                </label>
+
+                <input
+                  id="phone"
+                  type="text"
+                  value="+91 98765 43210"
+                >
+
+              </div>
+
+
+
+              <div class="form-group">
+
+                <label>
+                  Restaurant Name
+                </label>
+
+                <input
+                  id="restaurant"
+                  type="text"
+                  value="Green Leaf Restaurant"
+                >
+
+              </div>
+
+
+
+              <div class="form-group full-width">
+
+                <label>
+                  Address
+                </label>
+
+                <textarea id="address">Rajpur Road, Dehradun, Uttarakhand</textarea>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="save-area">
+
+              <button
+                class="btn btn-green"
+                onclick="saveProfile()"
+              >
+
+                <i class="fa-solid fa-check"></i>
+
+                Save Changes
+
+              </button>
+
+            </div>
+
+
+          </section>
+
+
+
+          <!-- NOTIFICATIONS -->
+
+          <section
+            id="notifications"
+            class="setting-section"
+          >
+
+
+            <div class="section-title">
+
+              <h3>
+                Notification Settings
+              </h3>
+
+              <p>
+                Choose which notifications you want to receive.
+              </p>
+
+            </div>
+
+
+
+            <div class="setting-option">
+
+              <div>
+
+                <b>
+                  Donation Requests
+                </b>
+
+                <p>
+                  Get notified when someone requests your food.
+                </p>
+
+              </div>
+
+
+              <label class="switch">
+
+                <input
+                  type="checkbox"
+                  checked
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+
+            <div class="setting-option">
+
+              <div>
+
+                <b>
+                  Pickup Updates
+                </b>
+
+                <p>
+                  Receive updates about your food pickups.
+                </p>
+
+              </div>
+
+
+              <label class="switch">
+
+                <input
+                  type="checkbox"
+                  checked
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+
+            <div class="setting-option">
+
+              <div>
+
+                <b>
+                  Messages
+                </b>
+
+                <p>
+                  Get notified when you receive a new message.
+                </p>
+
+              </div>
+
+
+              <label class="switch">
+
+                <input
+                  type="checkbox"
+                  checked
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+
+            <div class="setting-option">
+
+              <div>
+
+                <b>
+                  FoodBridge Updates
+                </b>
+
+                <p>
+                  Receive important platform announcements.
+                </p>
+
+              </div>
+
+
+              <label class="switch">
+
+                <input type="checkbox">
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+
+            <div class="save-area">
+
+              <button
+                class="btn btn-green"
+                onclick="saveNotifications()"
+              >
+
+                <i class="fa-solid fa-check"></i>
+
+                Save Preferences
+
+              </button>
+
+            </div>
+
+
+          </section>
+
+
+
+          <!-- SECURITY -->
+
+          <section
+            id="security"
+            class="setting-section"
+          >
+
+
+            <div class="section-title">
+
+              <h3>
+                Security
+              </h3>
+
+              <p>
+                Keep your FoodBridge account secure.
+              </p>
+
+            </div>
+
+
+
+            <div class="settings-form">
+
+
+              <div class="form-group full-width">
+
+                <label>
+                  Current Password
+                </label>
+
+                <input
+                  type="password"
+                  id="currentPassword"
+                  placeholder="Enter current password"
+                >
+
+              </div>
+
+
+
+              <div class="form-group">
+
+                <label>
+                  New Password
+                </label>
+
+                <input
+                  type="password"
+                  id="newPassword"
+                  placeholder="Enter new password"
+                >
+
+              </div>
+
+
+
+              <div class="form-group">
+
+                <label>
+                  Confirm Password
+                </label>
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Confirm new password"
+                >
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="save-area">
+
+              <button
+                class="btn btn-green"
+                onclick="changePassword()"
+              >
+
+                <i class="fa-solid fa-lock"></i>
+
+                Update Password
+
+              </button>
+
+            </div>
+
+
+
+            <!-- ACCOUNT ACTIONS -->
+
+            <div class="danger-zone">
+
+              <div>
+
+                <h4>
+                  Account Actions
+                </h4>
+
+                <p>
+                  Manage your account status.
+                </p>
+
+              </div>
+
+
+              <button
+                class="logout-btn"
+                onclick="logoutAccount()"
+              >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Log Out
+
+              </button>
+
+            </div>
+
+
+          </section>
+
+
+
+          <!-- PREFERENCES -->
+
+          <section
+            id="preferences"
+            class="setting-section"
+          >
+
+
+            <div class="section-title">
+
+              <h3>
+                Preferences
+              </h3>
+
+              <p>
+                Customize your FoodBridge experience.
+              </p>
+
+            </div>
+
+
+
+            <div class="settings-form">
+
+
+              <div class="form-group">
+
+                <label>
+                  Language
+                </label>
+
+                <select id="language">
+
+                  <option>
+                    English
+                  </option>
+
+                  <option>
+                    Hindi
+                  </option>
+
+                </select>
+
+              </div>
+
+
+
+              <div class="form-group">
+
+                <label>
+                  Time Zone
+                </label>
+
+                <select id="timezone">
+
+                  <option>
+                    India Standard Time (IST)
+                  </option>
+
+                  <option>
+                    UTC
+                  </option>
+
+                </select>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="setting-option">
+
+              <div>
+
+                <b>
+                  Email Updates
+                </b>
+
+                <p>
+                  Receive occasional FoodBridge updates by email.
+                </p>
+
+              </div>
+
+
+              <label class="switch">
+
+                <input
+                  type="checkbox"
+                  checked
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+
+            <div class="save-area">
+
+              <button
+                class="btn btn-green"
+                onclick="savePreferences()"
+              >
+
+                <i class="fa-solid fa-check"></i>
+
+                Save Preferences
+
+              </button>
+
+            </div>
+
+
+          </section>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+      <div class="wrap">
+
+        <div class="footer-grid">
+
+
+          <div class="footer-brand">
+
+            <div
+              class="logo-text"
+              style="color:#fff;"
+            >
+
+              Food<span style="color:#5cd66a;">
+                Bridge
+              </span>
+
+            </div>
+
+
+            <p>
+              Connecting surplus food from restaurants to those who need it
+              the most. Together, we can build a hunger-free world.
+            </p>
+
+
+            <div class="footer-socials">
+
+              <a href="#">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+
+          <div>
+
+            <h5>
+              Quick Links
+            </h5>
+
+            <ul>
+
+              <li>
+                <a href="index.html">
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a href="about.html">
+                  About Us
+                </a>
+              </li>
+
+              <li>
+                <a href="how-it-works.html">
+                  How It Works
+                </a>
+              </li>
+
+              <li>
+                <a href="available-food.html">
+                  Available Food
+                </a>
+              </li>
+
+              <li>
+                <a href="volunteer.html">
+                  Volunteer
+                </a>
+              </li>
+
+              <li>
+                <a href="blog.html">
+                  Blog
+                </a>
+              </li>
+
+              <li>
+                <a href="contact.html">
+                  Contact
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div>
+
+            <h5>
+              For Restaurants
+            </h5>
+
+            <ul>
+
+              <li>
+                <a href="signup.html">
+                  Register Your Restaurant
+                </a>
+              </li>
+
+              <li>
+                <a href="dashboard.html">
+                  Restaurant Dashboard
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Donation Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Success Stories
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div>
+
+            <h5>
+              For NGOs
+            </h5>
+
+            <ul>
+
+              <li>
+                <a href="signup.html">
+                  Register Your NGO
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  NGO Dashboard
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Food Safety Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Resources
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div>
+
+            <h5>
+              For Volunteers
+            </h5>
+
+            <ul>
+
+              <li>
+                <a href="volunteer.html">
+                  Become a Volunteer
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Volunteer Dashboard
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  Rewards
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div>
+
+            <h5>
+              Newsletter
+            </h5>
+
+            <p
+              style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;"
+            >
+              Subscribe for updates and stories.
+            </p>
+
+
+            <div class="footer-newsletter">
+
+              <input
+                placeholder="Enter your email"
+              >
+
+              <button
+                class="btn btn-green btn-block btn-sm"
+                onclick="handleNewsletterSubmit(event)"
+              >
+                Subscribe
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+          <span>
+            © 2026 FoodBridge. All rights reserved.
+          </span>
+
+          <span>
+            Privacy Policy &nbsp;|&nbsp;
+            Terms &amp; Conditions &nbsp;|&nbsp;
+            Food Safety Policy
+          </span>
+
+          <span>
+            Made with ❤️ for a better tomorrow
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

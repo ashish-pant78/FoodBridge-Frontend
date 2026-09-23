@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Food - FoodBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+.request-page{padding:30px 34px 55px;max-width:1400px;margin:0 auto}
+.request-page .page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px!important}
+.request-page .page-heading h2{margin:0 0 6px;font-size:27px}.request-page .page-heading p{margin:0;color:var(--text-soft);font-size:13px}
+.request-layout{display:flex;flex-direction:column;gap:22px;align-items:stretch}
+.request-card{background:var(--card,#fff);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.045);overflow:hidden}
+.request-card-head{display:flex;align-items:flex-start;gap:13px;padding-bottom:17px;border-bottom:1px solid var(--border)}
+.request-step{width:40px;height:40px;min-width:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#eaf8ee;color:var(--green);font-weight:800;font-size:14px}
+.request-card h3{margin:0 0 4px;font-size:17px;color:var(--text,#1f2937)}.request-card-head p{margin:0;color:var(--text-soft);font-size:12px;line-height:1.55}
+.selected-food-box{display:none;margin:18px 0 2px;padding:14px;border:1px solid #cfe8d4;border-radius:15px;background:linear-gradient(135deg,#f7fcf8,#effaf2)}
+.selected-food-box:before{content:'Selected food';display:block;text-transform:uppercase;letter-spacing:.7px;font-size:10px;font-weight:800;color:var(--green);margin:0 0 10px 2px}
+.selected-food-inner{display:flex;align-items:center;gap:14px}.selected-food-image{width:76px;height:68px;border-radius:12px;object-fit:cover}.selected-food-info{min-width:0;flex:1}.selected-food-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.selected-food-title h3{margin:4px 0 2px;font-size:15px}.selected-food-title>i{color:var(--green);font-size:18px}.selected-food-info>p{margin:0;color:var(--text-soft);font-size:11.5px}.selected-food-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:7px;color:var(--text-soft);font-size:10.5px}.selected-food-meta span{display:inline-flex;gap:4px;align-items:center}
+.request-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:20px}.request-form-group{display:flex;flex-direction:column;gap:7px}.request-form-group.full{grid-column:1/-1}.request-form-group label{font-size:12px;font-weight:700;color:var(--text,#374151)}
+.request-form-group input,.request-form-group textarea{width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:11px;background:var(--bg,#fff);font:inherit;font-size:13px;outline:none;transition:.18s}.request-form-group textarea{min-height:125px;resize:vertical}.request-form-group input::placeholder,.request-form-group textarea::placeholder{color:#9aa5a0}.request-form-group input:focus,.request-form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(47,158,70,.09)}
+.request-actions{margin-top:20px;padding-top:18px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap}.request-actions .btn{min-height:42px}.request-success{display:none;align-items:center;gap:8px;margin-top:15px;padding:12px 14px;border-radius:10px;background:#eaf8ee;color:#20783a;font-size:12px;font-weight:700}
+.request-side-list{padding:0;width:100%;box-shadow:0 12px 34px rgba(24,70,38,.06)}.request-side-list .request-card-head{padding:22px 24px 17px;background:linear-gradient(180deg,#fbfefb,#fff)}
+.request-food-toolbar{padding:14px 24px;border-bottom:1px solid var(--border);background:var(--section-bg,#f8faf8);display:flex;gap:10px;align-items:center}.request-food-search{position:relative;flex:1}.request-food-search i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#91a096;font-size:12px}.request-food-search input,.request-food-toolbar select{height:40px;border:1px solid var(--border);border-radius:10px;background:var(--card,#fff);font:inherit;font-size:12px;outline:none;color:var(--text)}.request-food-search input{width:100%;padding:0 12px 0 32px}.request-food-toolbar select{padding:0 10px;min-width:145px}.request-food-search input:focus,.request-food-toolbar select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(47,158,70,.08)}
+.request-food-count{padding:14px 24px 3px;color:var(--text-soft);font-size:11.5px}.request-food-count b{color:var(--text);font-size:13px}
+.request-list{display:flex;flex-direction:column;gap:14px;padding:10px 24px 24px}
+.request-food-option{display:grid;grid-template-columns:128px minmax(0,1fr) auto;grid-template-rows:auto auto;gap:14px;padding:14px!important;background:var(--card,#fff);border:1px solid var(--border)!important;border-radius:16px!important;transition:transform .16s,box-shadow .16s,border-color .16s,background .16s;box-shadow:none!important;align-items:start;min-width:0}.request-food-option:hover{transform:translateY(-2px);border-color:#b9dcbc!important;box-shadow:0 8px 22px rgba(0,0,0,.06)!important}.request-food-option.selected{border-color:var(--green)!important;background:#f7fcf8;box-shadow:0 0 0 2px rgba(47,158,70,.08)!important}
+.request-food-image{width:128px;height:128px;grid-row:1/3;border-radius:13px;object-fit:cover;background:#edf6ef}.request-food-option .food-content{min-width:0}.request-food-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.request-food-top .food-tag{margin:0}.request-available{font-size:9.5px;color:#2d8442;font-weight:700;white-space:nowrap}.request-available i{font-size:6px;vertical-align:middle;margin-right:3px}.request-food-option h3{font-size:15px;margin:7px 0 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.request-donor{font-size:11px!important;margin:0!important;color:var(--text-soft)}.request-food-option .food-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px;font-size:10px;color:var(--text-soft)}.request-food-option .food-meta span{display:inline-flex;align-items:center;gap:4px}.request-food-description{font-size:10.5px!important;line-height:1.45;margin:9px 0 0!important;color:var(--text-soft);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.request-food-actions{grid-column:3;grid-row:1/3;display:flex;justify-content:flex-end;gap:8px;align-items:center}.request-food-actions .btn{min-width:76px;justify-content:center}.request-food-actions .btn{height:36px}.request-food-option .food-content{padding-top:2px}.request-food-option .food-meta span{white-space:nowrap}.request-food-option .food-meta i{color:var(--green)}.request-food-option .request-food-description{max-width:720px}
+.request-empty{grid-column:1/-1;text-align:center;padding:45px 18px;color:var(--text-soft);border:1px dashed var(--border);border-radius:13px}.request-empty i{font-size:27px;color:#9ab5a0;margin-bottom:10px}.request-empty p{margin:0;font-size:12px}
+@media(max-width:1050px){.request-food-option{grid-template-columns:105px minmax(0,1fr);grid-template-rows:auto auto}.request-food-image{width:105px;height:105px}.request-food-actions{grid-column:2;grid-row:2;justify-content:flex-start}}
+@media(max-width:700px){.request-page{padding:20px 15px 35px}.request-card{padding:18px}.request-side-list{padding:0}.request-side-list .request-card-head{padding:18px}.request-food-toolbar{padding:12px 18px;flex-direction:column;align-items:stretch}.request-food-toolbar select{width:100%}.request-food-count{padding-left:18px;padding-right:18px}.request-list{padding:10px 18px 18px;grid-template-columns:1fr}.request-form-grid{grid-template-columns:1fr}.request-form-group.full{grid-column:auto}.request-actions .btn{width:100%;justify-content:center}.request-page .page-heading h2{font-size:21px}.selected-food-inner{align-items:flex-start}.selected-food-image{width:62px;height:58px}.request-food-option{grid-template-columns:82px minmax(0,1fr);grid-template-rows:auto auto;gap:11px;padding:11px!important}.request-food-image{width:82px;height:92px}.request-food-actions{grid-column:2;grid-row:2;justify-content:flex-start;flex-wrap:wrap}.request-food-actions .btn{flex:1}.request-food-option h3{font-size:14px}.request-food-description{display:none}}
+
+.request-page .request-layout{display:block;max-width:900px}
+.request-page .request-card{width:100%}
+.request-page .request-actions{margin-top:24px}
+.request-page .selected-food-box:empty{display:none}
+</style>
+</head>
+<body>
+<div class="dash-shell">
+<aside class="dash-sidebar">
+<a href="index.html" class="logo" style="margin-bottom:26px;padding:0 8px;"><div class="logo-icon"><i class="fa-solid fa-seedling"></i></div><div><div class="logo-text">Food<span>Bridge</span></div><div class="logo-tagline">Share Food, Share Hope</div></div></a>
+<nav class="dash-nav">
+<a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+<a href="dashboard-post-food.html"><i class="fa-solid fa-circle-plus"></i> Post Food</a>
+<a href="dashboard-my-donations.html"><i class="fa-solid fa-box"></i> My Donations</a>
+<a href="dashboard-requests.html"><i class="fa-solid fa-hand-holding-heart"></i> Requests</a>
+<a href="dashboard-my-pickups.html"><i class="fa-solid fa-truck"></i> My Pickups</a>
+<a href="dashboard-messages.html"><i class="fa-solid fa-message"></i> Messages</a>
+<a href="dashboard-notifications.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+<a href="dashboard-my-impact.html"><i class="fa-solid fa-chart-line"></i> FoodBridge Impact</a>
+<a href="dashboard-available-food.html"><i class="fa-solid fa-utensils"></i> Available Food</a>
+<a href="dashboard-settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+<a href="dashboard-help.html"><i class="fa-solid fa-circle-question"></i> Help & Support</a>
+</nav>
+<div class="dash-help"><i class="fa-solid fa-headset"></i><b style="font-size:13px;">Need Help?</b><p>Our support team is here to help you.</p><button class="btn btn-green btn-block btn-sm" id="contactSupportBtn">Contact Support</button></div>
+</aside>
+<main class="dash-main">
+<div class="dash-topbar"><div class="dash-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search for food, requests, or NGOs..."></div><div class="bell-wrap icon-btn" id="notificationBell"><i class="fa-regular fa-bell"></i><span class="bell-dot">3</span></div><div class="dash-profile"><div class="dash-avatar">RS</div><div><b>Riya Sharma</b><span>Restaurant</span></div><i class="fa-solid fa-chevron-down" style="color:var(--text-soft);font-size:11px;"></i></div></div>
+<div class="request-page">
+<div class="page-heading"><div><h2>Request Food</h2><p>Choose a food donation, add your requirements, and send a request to the donor.</p></div></div>
+<div class="request-layout">
+<section class="request-card">
+<div class="request-card-head"><div class="request-step">1</div><div><h3>Food Request Details</h3><p>Complete the details below after selecting a food item.</p></div></div>
+<div id="selectedFoodBox" class="selected-food-box"></div>
+<form id="foodRequestForm">
+<input type="hidden" id="requestFoodId">
+<div class="request-form-grid">
+<div class="request-form-group"><label for="requestQuantity">Required Quantity</label><input id="requestQuantity" type="text" placeholder="e.g. 20 servings" required></div>
+<div class="request-form-group"><label for="requestContact">Contact Details</label><input id="requestContact" type="text" placeholder="Phone or email" required></div>
+<div class="request-form-group full"><label for="requestNote">Message to Donor <span style="font-weight:400;color:var(--text-soft)">(Optional)</span></label><textarea id="requestNote" placeholder="Tell the donor how this food will be used or share any useful pickup information..."></textarea></div>
+</div>
+<div class="request-actions"><button type="submit" class="btn btn-green"><i class="fa-solid fa-paper-plane"></i> Send Request</button><a href="dashboard-available-food.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Available Food</a></div>
+<div id="requestSuccess" class="request-success"><i class="fa-solid fa-circle-check"></i> Food request sent successfully!</div>
+</form>
+</section>
+
+</div>
+</div>
+</main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

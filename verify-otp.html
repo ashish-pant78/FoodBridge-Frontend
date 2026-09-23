@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Email — FoodBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="navbar-inner">
+    <div class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+      <div><div class="logo-text">Food<span>Bridge</span></div><div class="logo-tagline">Share Food, Share Hope</div></div>
+    </div>
+    <div class="nav-right"><button class="btn btn-outline btn-sm" onclick="location.href='signup.html'"><i class="fa-solid fa-arrow-left"></i> Back to Sign Up</button></div>
+  </div>
+</header>
+
+<main class="form-page" style="min-height:calc(100vh - 90px);display:flex;align-items:center;">
+  <div class="wrap" style="width:100%;">
+    <div class="form-right" style="max-width:520px;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.08);">
+      <div style="text-align:center;margin-bottom:22px;">
+        <div style="width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:#eaf7ec;color:#2b8a3e;display:flex;align-items:center;justify-content:center;font-size:26px;"><i class="fa-solid fa-envelope-circle-check"></i></div>
+        <h2>Verify Your Email</h2>
+        <p>Enter the 6-digit OTP sent to your email address.</p>
+      </div>
+      <form onsubmit="verifySignupOTP(event)">
+        <div class="field">
+          <label>Verification OTP</label>
+          <div class="input-wrap"><i class="fa-solid fa-key"></i><input id="signupOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="Enter 6-digit OTP" required></div>
+        </div>
+        <button class="btn btn-green btn-block" type="submit"><i class="fa-solid fa-circle-check"></i> Verify & Create Account</button>
+      </form>
+      <div style="text-align:center;margin-top:18px;font-size:13px;color:var(--text-soft);">
+        Didn't receive it? <button type="button" onclick="resendSignupOTP(event)" style="border:0;background:none;color:var(--green);font-weight:700;cursor:pointer;">Resend OTP</button>
+      </div>
+      <div style="text-align:center;margin-top:10px;font-size:11px;color:var(--text-soft);">OTP expires in 10 minutes.</div>
+    </div>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up — FoodBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>.navbar .nav-links,.navbar .hamburger,.navbar .nav-right>.icon-btn{display:none!important}.navbar .nav-right{display:flex!important}</style>
+</head>
+<body>
+
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+        <div>
+          <div class="logo-text">Food<span>Bridge</span></div>
+          <div class="logo-tagline">Share Food, Share Hope</div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <button class="btn btn-outline btn-sm" onclick="location.href='login.html'"><i class="fa-regular fa-user"></i> Login</button>
+        <button class="btn btn-green btn-sm" onclick="location.href='signup.html'"><i class="fa-solid fa-user-plus"></i> Sign Up</button>
+      </div>
+    </div>
+  </header>
+<div class="form-page">
+  <div class="wrap">
+    <div class="form-split">
+      <div class="form-left">
+        <h2>Join FoodBridge<br>Be a part of something <span class="accent">meaningful.</span></h2>
+        <p>Create your account and start your journey towards a hunger-free world.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:22px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:34px;height:34px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-people-group" style="color:#5cd66a;font-size:14px;"></i></div><div><b style="font-size:13.5px;">Connect with Purpose</b><p style="font-size:12px;color:#c7d3ca;margin-top:2px;">Connect with restaurants, NGOs and volunteers near you.</p></div></div><div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:34px;height:34px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-share-nodes" style="color:#5cd66a;font-size:14px;"></i></div><div><b style="font-size:13.5px;">Share & Save Lives</b><p style="font-size:12px;color:#c7d3ca;margin-top:2px;">Help reduce food waste and feed those who need it the most.</p></div></div><div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:34px;height:34px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-award" style="color:#5cd66a;font-size:14px;"></i></div><div><b style="font-size:13.5px;">Make an Impact</b><p style="font-size:12px;color:#c7d3ca;margin-top:2px;">Track your impact and be a part of real change.</p></div></div>
+        </div>
+        <div style="font-size:12px;color:#c7d3ca;"><i class="fa-solid fa-shield-halved"></i> Your data is safe and secure with us.</div>
+      </div>
+      <div class="form-right">
+        <h2>Create Your Account</h2>
+        <p>Sign up to get started with FoodBridge</p>
+        <div style="margin-bottom:10px;font-size:13px;font-weight:600;">I am signing up as</div>
+        <div class="role-grid">
+          <div class="role-opt active" onclick="selectRole(this)"><i class="fa-solid fa-shop"></i>Restaurant</div>
+          <div class="role-opt" onclick="selectRole(this)"><i class="fa-solid fa-hands-holding-child"></i>NGO</div>
+          <div class="role-opt" onclick="selectRole(this)"><i class="fa-regular fa-user"></i>Volunteer</div>
+          
+        </div>
+        <form onsubmit="handleSignupSubmit(event)">
+          <div class="field-row">
+            <div class="field"><label>Full Name</label><div class="input-wrap"><i class="fa-regular fa-user"></i><input required></div></div>
+            <div class="field"><label>Email Address</label><div class="input-wrap"><i class="fa-regular fa-envelope"></i><input type="email" required></div></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Phone Number</label><div class="input-wrap"><i class="fa-solid fa-phone"></i><input></div></div>
+            <div class="field"><label>Password</label><div class="input-wrap"><i class="fa-solid fa-lock"></i><input type="password"><i class="fa-regular fa-eye eye"></i></div></div>
+          </div>
+          <div class="field"><label>Confirm Password</label><div class="input-wrap"><i class="fa-solid fa-lock"></i><input type="password"><i class="fa-regular fa-eye eye"></i></div></div>
+          <div class="checkbox-row"><input type="checkbox" required style="margin-top:2px;"> I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a></div>
+          <button class="btn btn-green btn-block"><i class="fa-solid fa-user-plus"></i> Create Account</button>
+        </form>
+        <div class="divider-or">or sign up with</div>
+        <div class="social-row">
+          <button class="btn btn-outline"><i class="fa-brands fa-google"></i> Google</button>
+          <button class="btn btn-outline"><i class="fa-brands fa-facebook" style="color:#1877f2;"></i> Facebook</button>
+          <button class="btn btn-outline"><i class="fa-brands fa-apple"></i> Apple</button>
+        </div>
+        <div class="form-foot-note">Already have an account? <a href="login.html" onclick="location.href='login.html';return false;">Login</a></div>
+      </div>
+    </div>
+    <div class="form-strip">
+      <div class="form-strip-item"><i class="fa-solid fa-shield-halved"></i><div><h5>Safe & Secure</h5><p>Your data is protected with top-level security.</p></div></div><div class="form-strip-item"><i class="fa-solid fa-clock"></i><div><h5>Quick & Easy</h5><p>Sign up in less than a minute.</p></div></div><div class="form-strip-item"><i class="fa-solid fa-people-group"></i><div><h5>Trusted Community</h5><p>Join thousands of verified users making a difference.</p></div></div><div class="form-strip-item"><i class="fa-solid fa-leaf"></i><div><h5>Grow the Impact</h5><p>Together, we can build a better tomorrow.</p></div></div>
+    </div>
+  </div>
+</div>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text" style="color:#fff;">Food<span style="color:#5cd66a;">Bridge</span></div>
+          <p>Connecting surplus food from restaurants to those who need it the most. Together, we can build a hunger-free world.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div><h5>Quick Links</h5><ul>
+          <li><a href="index.html" onclick="location.href='index.html';return false;">Home</a></li>
+          <li><a href="about.html" onclick="location.href='about.html';return false;">About Us</a></li>
+          <li><a href="how-it-works.html" onclick="location.href='how-it-works.html';return false;">How It Works</a></li>
+          <li><a href="available-food.html" onclick="location.href='available-food.html';return false;">Available Food</a></li>
+          <li><a href="volunteer.html" onclick="location.href='volunteer.html';return false;">Volunteer</a></li>
+          <li><a href="blog.html" onclick="location.href='blog.html';return false;">Blog</a></li>
+          <li><a href="contact.html" onclick="location.href='contact.html';return false;">Contact</a></li>
+        </ul></div>
+        <div><h5>For Restaurants</h5><ul>
+          <li><a href="signup.html" onclick="location.href='signup.html';return false;">Register Your Restaurant</a></li>
+          <li><a href="dashboard.html" onclick="location.href='dashboard.html';return false;">Restaurant Dashboard</a></li>
+          <li><a href="#">Donation Guidelines</a></li>
+          <li><a href="#">Success Stories</a></li>
+        </ul></div>
+        <div><h5>For NGOs</h5><ul>
+          <li><a href="signup.html" onclick="location.href='signup.html';return false;">Register Your NGO</a></li>
+          <li><a href="#">NGO Dashboard</a></li>
+          <li><a href="#">Food Safety Guidelines</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul></div>
+        <div><h5>For Volunteers</h5><ul>
+          <li><a href="volunteer.html" onclick="location.href='volunteer.html';return false;">Become a Volunteer</a></li>
+          <li><a href="#">Volunteer Dashboard</a></li>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">Rewards</a></li>
+        </ul></div>
+        <div>
+          <h5>Newsletter</h5>
+          <p style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;">Subscribe for updates and stories.</p>
+          <div class="footer-newsletter">
+            <input placeholder="Enter your email">
+            <button class="btn btn-green btn-block btn-sm" onclick="handleNewsletterSubmit(event)">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FoodBridge. All rights reserved.</span>
+        <span>Privacy Policy &nbsp;|&nbsp; Terms &amp; Conditions &nbsp;|&nbsp; Food Safety Policy</span>
+        <span>Made with ❤️ for a better tomorrow</span>
+      </div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+</body>
+</html>

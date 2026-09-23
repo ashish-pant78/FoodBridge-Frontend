@@ -1,0 +1,1451 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Available Food (Dashboard) — FoodBridge</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="dash-shell">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="dash-sidebar">
+
+<a href="index.html" class="logo" style="margin-bottom:26px;padding:0 8px;">
+    <div class="logo-icon">
+        <i class="fa-solid fa-seedling"></i>
+    </div>
+
+    <div>
+        <div class="logo-text">
+            Food<span>Bridge</span>
+        </div>
+
+        <div class="logo-tagline">
+            Share Food, Share Hope
+        </div>
+    </div>
+</a>
+
+
+<nav class="dash-nav">
+
+<a href="dashboard.html">
+    <i class="fa-solid fa-house"></i>
+    Dashboard
+</a>
+
+<a href="dashboard-post-food.html">
+    <i class="fa-solid fa-circle-plus"></i>
+    Post Food
+</a>
+
+<a href="dashboard-my-donations.html">
+    <i class="fa-solid fa-box"></i>
+    My Donations
+</a>
+
+<a href="dashboard-requests.html">
+    <i class="fa-solid fa-hand-holding-heart"></i>
+    Requests
+</a>
+
+<a href="dashboard-my-pickups.html">
+    <i class="fa-solid fa-truck"></i>
+    My Pickups
+</a>
+
+<a href="dashboard-messages.html">
+    <i class="fa-solid fa-message"></i>
+    Messages
+    <span class="pill-status"
+          style="margin-left:auto;background:var(--red);color:#fff;">
+        2
+    </span>
+</a>
+
+<a href="dashboard-notifications.html">
+    <i class="fa-solid fa-bell"></i>
+    Notifications
+</a>
+
+<a href="dashboard-my-impact.html">
+    <i class="fa-solid fa-chart-line"></i>
+    FoodBridge Impact
+</a>
+
+<a href="dashboard-available-food.html" class="active">
+    <i class="fa-solid fa-utensils"></i>
+    Available Food
+</a>
+
+<a href="dashboard-settings.html">
+    <i class="fa-solid fa-gear"></i>
+    Settings
+</a>
+
+<a href="dashboard-help.html">
+    <i class="fa-solid fa-circle-question"></i>
+    Help & Support
+</a>
+
+</nav>
+
+
+<div class="dash-help">
+
+<i class="fa-solid fa-headset"></i>
+
+<b style="font-size:13px;">
+    Need Help?
+</b>
+
+<p>
+    Our support team is here to help you.
+</p>
+
+<button class="btn btn-green btn-block btn-sm"
+        id="contactSupportBtn">
+    Contact Support
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="dash-main">
+
+
+<!-- TOPBAR -->
+
+<div class="dash-topbar">
+
+<div class="dash-search">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+    type="text"
+    id="foodSearch"
+    placeholder="Search for donations, requests, or NGOs..."
+>
+
+</div>
+
+
+<div class="bell-wrap icon-btn"
+     id="notificationBell">
+
+<i class="fa-regular fa-bell"></i>
+
+<span class="bell-dot">
+    3
+</span>
+
+</div>
+
+
+<div class="dash-profile"
+     id="profileBtn">
+
+<div class="dash-avatar">
+    RS
+</div>
+
+<div>
+    <b>Riya Sharma</b>
+    <span>Restaurant</span>
+</div>
+
+<i class="fa-solid fa-chevron-down"
+   style="color:var(--text-soft);font-size:11px;">
+</i>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= CONTENT ================= -->
+
+<div class="dash-content">
+
+<h2 style="font-size:22px;">
+    Available Food
+</h2>
+
+<p style="color:var(--text-soft);
+          font-size:13.5px;
+          margin-top:4px;">
+    Fresh surplus food ready to make a difference
+</p>
+
+
+
+<!-- ================= FOOD TABS ================= -->
+
+<div class="df-tabs">
+
+<button class="active food-tab"
+        data-category="All">
+
+<i class="fa-solid fa-grip"></i>
+All Food
+
+</button>
+
+
+<button class="food-tab"
+        data-category="Cooked Meal">
+
+<i class="fa-solid fa-bowl-food"></i>
+Cooked Meals
+
+</button>
+
+
+<button class="food-tab"
+        data-category="Fruits">
+
+<i class="fa-solid fa-apple-whole"></i>
+Fruits & Vegetables
+
+</button>
+
+
+<button class="food-tab"
+        data-category="Bakery">
+
+<i class="fa-solid fa-bread-slice"></i>
+Bakery
+
+</button>
+
+
+<button class="food-tab"
+        data-category="Grocery">
+
+<i class="fa-solid fa-basket-shopping"></i>
+Grocery
+
+</button>
+
+
+<button class="food-tab"
+        data-category="Beverages">
+
+<i class="fa-solid fa-mug-hot"></i>
+Beverages
+
+</button>
+
+</div>
+
+
+
+<div class="df-layout">
+
+
+<!-- ================= FOOD LIST ================= -->
+
+<div>
+
+
+<div id="foodList">
+
+
+<!-- FOOD 1 -->
+
+<div class="df-item food-card"
+
+data-category="Cooked Meal"
+
+data-name="Veg Pulao with Dal"
+
+data-donor="Hotel Green Leaf"
+
+data-location="Connaught Place, Dehradun"
+
+data-time="Today, 11:00 AM - 1:00 PM"
+
+data-servings="10-15"
+
+data-left="2 hrs left">
+
+
+<img
+src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=400&auto=format&fit=crop"
+alt="Veg Pulao with Dal"
+>
+
+
+<div style="flex:1;">
+
+<span class="food-tag tag-veg"
+style="background:#fdeecb;color:#c9840a;">
+
+Cooked Meal
+
+</span>
+
+
+<h4>
+Veg Pulao with Dal
+</h4>
+
+
+<div style="font-size:12.5px;color:var(--text-soft);">
+
+Hotel Green Leaf
+
+<i class="fa-solid fa-circle-check"
+style="color:var(--green);font-size:10px;">
+</i>
+
+</div>
+
+
+<div class="meta">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Connaught Place, Dehradun
+
+&nbsp;
+
+<i class="fa-regular fa-clock"></i>
+
+Today, 11:00 AM - 1:00 PM
+
+</div>
+
+</div>
+
+
+<div class="servings">
+
+<b>10-15</b>
+
+Servings
+
+</div>
+
+
+<div class="food-time">
+
+<i class="fa-regular fa-clock"></i>
+
+<br>
+
+2 hrs left
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn btn-green btn-sm view-food-btn">
+
+View Details
+
+</button>
+
+
+<button
+class="btn btn-outline btn-sm save-food-btn">
+
+<i class="fa-regular fa-heart"></i>
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- FOOD 2 -->
+
+<div class="df-item food-card"
+
+data-category="Fruits"
+
+data-name="Mixed Fresh Fruits"
+
+data-donor="FreshMart Supermarket"
+
+data-location="Lajpat Nagar, Dehradun"
+
+data-time="Today, 12:00 PM - 3:00 PM"
+
+data-servings="20-25"
+
+data-left="3 hrs left">
+
+
+<img
+src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=400&auto=format&fit=crop"
+alt="Mixed Fresh Fruits"
+>
+
+
+<div style="flex:1;">
+
+<span class="food-tag tag-veg"
+style="background:#fdeecb;color:#c9840a;">
+
+Fruits
+
+</span>
+
+
+<h4>
+Mixed Fresh Fruits
+</h4>
+
+
+<div style="font-size:12.5px;color:var(--text-soft);">
+
+FreshMart Supermarket
+
+<i class="fa-solid fa-circle-check"
+style="color:var(--green);font-size:10px;">
+</i>
+
+</div>
+
+
+<div class="meta">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Lajpat Nagar, Dehradun
+
+&nbsp;
+
+<i class="fa-regular fa-clock"></i>
+
+Today, 12:00 PM - 3:00 PM
+
+</div>
+
+</div>
+
+
+<div class="servings">
+
+<b>20-25</b>
+
+Servings
+
+</div>
+
+
+<div class="food-time">
+
+<i class="fa-regular fa-clock"></i>
+
+<br>
+
+3 hrs left
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn btn-green btn-sm view-food-btn">
+
+View Details
+
+</button>
+
+
+<button
+class="btn btn-outline btn-sm save-food-btn">
+
+<i class="fa-regular fa-heart"></i>
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- FOOD 3 -->
+
+<div class="df-item food-card"
+
+data-category="Bakery"
+
+data-name="Assorted Bread & Buns"
+
+data-donor="Bakers' Delight"
+
+data-location="Saket, Dehradun"
+
+data-time="Today, 4:00 PM - 6:00 PM"
+
+data-servings="15-20"
+
+data-left="5 hrs left">
+
+
+<img
+src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop"
+alt="Assorted Bread & Buns"
+>
+
+
+<div style="flex:1;">
+
+<span class="food-tag tag-veg"
+style="background:#fdeecb;color:#c9840a;">
+
+Bakery
+
+</span>
+
+
+<h4>
+Assorted Bread & Buns
+</h4>
+
+
+<div style="font-size:12.5px;color:var(--text-soft);">
+
+Bakers' Delight
+
+<i class="fa-solid fa-circle-check"
+style="color:var(--green);font-size:10px;">
+</i>
+
+</div>
+
+
+<div class="meta">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Saket, Dehradun
+
+&nbsp;
+
+<i class="fa-regular fa-clock"></i>
+
+Today, 4:00 PM - 6:00 PM
+
+</div>
+
+</div>
+
+
+<div class="servings">
+
+<b>15-20</b>
+
+Servings
+
+</div>
+
+
+<div class="food-time">
+
+<i class="fa-regular fa-clock"></i>
+
+<br>
+
+5 hrs left
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn btn-green btn-sm view-food-btn">
+
+View Details
+
+</button>
+
+
+<button
+class="btn btn-outline btn-sm save-food-btn">
+
+<i class="fa-regular fa-heart"></i>
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- FOOD 4 -->
+
+<div class="df-item food-card"
+
+data-category="Cooked Meal"
+
+data-name="Paneer Curry & Roti"
+
+data-donor="Spice Court Restaurant"
+
+data-location="Dwarka, Dehradun"
+
+data-time="Tomorrow, 11:00 AM - 1:00 PM"
+
+data-servings="12-15"
+
+data-left="18 hrs left">
+
+
+<img
+src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400&auto=format&fit=crop"
+alt="Paneer Curry & Roti"
+>
+
+
+<div style="flex:1;">
+
+<span class="food-tag tag-veg"
+style="background:#fdeecb;color:#c9840a;">
+
+Cooked Meal
+
+</span>
+
+
+<h4>
+Paneer Curry & Roti
+</h4>
+
+
+<div style="font-size:12.5px;color:var(--text-soft);">
+
+Spice Court Restaurant
+
+<i class="fa-solid fa-circle-check"
+style="color:var(--green);font-size:10px;">
+</i>
+
+</div>
+
+
+<div class="meta">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Dwarka, Dehradun
+
+&nbsp;
+
+<i class="fa-regular fa-clock"></i>
+
+Tomorrow, 11:00 AM - 1:00 PM
+
+</div>
+
+</div>
+
+
+<div class="servings">
+
+<b>12-15</b>
+
+Servings
+
+</div>
+
+
+<div class="food-time">
+
+<i class="fa-regular fa-clock"></i>
+
+<br>
+
+18 hrs left
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn btn-green btn-sm view-food-btn">
+
+View Details
+
+</button>
+
+
+<button
+class="btn btn-outline btn-sm save-food-btn">
+
+<i class="fa-regular fa-heart"></i>
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- NO RESULTS -->
+
+<div id="noFoodMessage"
+style="display:none;text-align:center;padding:40px;color:var(--text-soft);">
+
+<i class="fa-solid fa-bowl-food"
+style="font-size:35px;margin-bottom:10px;">
+</i>
+
+<h4>
+No food found
+</h4>
+
+<p>
+Try changing your search or filters.
+</p>
+
+</div>
+
+
+
+<!-- ================= PAGINATION ================= -->
+
+<div class="pagination"
+id="foodPagination">
+
+<button data-page="prev">
+‹
+</button>
+
+<button class="active"
+data-page="1">
+1
+</button>
+
+<button data-page="2">
+2
+</button>
+
+<button data-page="3">
+3
+</button>
+
+<span style="padding:8px 4px;">
+…
+</span>
+
+<button data-page="10">
+10
+</button>
+
+<button data-page="next">
+›
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ================= RIGHT FILTER ================= -->
+
+<div class="df-side">
+
+
+<!-- FILTER BOX -->
+
+<div class="box">
+
+<div class="head"
+style="margin-bottom:0;">
+
+<h4>
+Filter By
+</h4>
+
+<a href="#"
+id="resetFoodFilters">
+Reset
+</a>
+
+</div>
+
+
+<label>
+Location
+</label>
+
+<select id="foodLocation">
+
+<option>
+All Locations
+</option>
+
+<option>
+Connaught Place, Dehradun
+</option>
+
+<option>
+Lajpat Nagar, Dehradun
+</option>
+
+<option>
+Saket, Dehradun
+</option>
+
+<option>
+Dwarka, Dehradun
+</option>
+
+</select>
+
+
+
+<label>
+Distance
+</label>
+
+<select id="foodDistance">
+
+<option>
+Within 10 km
+</option>
+
+<option>
+Within 5 km
+</option>
+
+<option>
+Within 25 km
+</option>
+
+<option>
+Any distance
+</option>
+
+</select>
+
+
+
+<label>
+Food Type
+</label>
+
+<select id="foodType">
+
+<option>
+All Types
+</option>
+
+<option>
+Cooked Meal
+</option>
+
+<option>
+Fruits
+</option>
+
+<option>
+Bakery
+</option>
+
+<option>
+Grocery
+</option>
+
+<option>
+Beverages
+</option>
+
+</select>
+
+
+
+<label>
+Available Time
+</label>
+
+<select id="foodTime">
+
+<option>
+Anytime
+</option>
+
+<option>
+Today
+</option>
+
+<option>
+Tomorrow
+</option>
+
+</select>
+
+
+
+<button
+class="btn btn-green btn-block"
+id="applyFoodFilters"
+style="margin-top:18px;">
+
+<i class="fa-solid fa-filter"></i>
+
+Apply Filters
+
+</button>
+
+</div>
+
+
+
+<!-- TODAY'S IMPACT -->
+
+<div class="box">
+
+<h4 style="margin-bottom:2px;">
+Today's Impact
+</h4>
+
+<p style="font-size:12px;
+color:var(--text-soft);
+margin-bottom:10px;">
+
+Together, we're creating change
+
+</p>
+
+
+<div class="today-impact-row">
+
+<span>
+<i class="fa-solid fa-bowl-food"></i>
+Meals Shared
+</span>
+
+<b>
+1,248
+</b>
+
+</div>
+
+
+<div class="today-impact-row">
+
+<span>
+<i class="fa-solid fa-leaf"></i>
+Food Saved
+</span>
+
+<b>
+356 kg
+</b>
+
+</div>
+
+
+<div class="today-impact-row">
+
+<span>
+<i class="fa-solid fa-people-group"></i>
+People Helped
+</span>
+
+<b>
+890
+</b>
+
+</div>
+
+
+<div class="today-impact-row">
+
+<span>
+<i class="fa-solid fa-cloud"></i>
+CO₂ Reduced
+</span>
+
+<b>
+512 kg
+</b>
+
+</div>
+
+
+<button
+class="btn btn-outline btn-block btn-sm"
+id="viewImpactBtn"
+style="margin-top:14px;">
+
+<i class="fa-solid fa-chart-line"></i>
+
+View FoodBridge Impact
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="wrap">
+
+<div class="footer-grid">
+
+
+<div class="footer-brand">
+
+<div class="logo-text"
+style="color:#fff;">
+
+Food<span style="color:#5cd66a;">
+Bridge
+</span>
+
+</div>
+
+
+<p>
+Connecting surplus food from restaurants to those who need it the most.
+Together, we can build a hunger-free world.
+</p>
+
+
+<div class="footer-socials">
+
+<a href="#">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-twitter"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+
+
+<div>
+
+<h5>
+Quick Links
+</h5>
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="about.html">
+About Us
+</a>
+</li>
+
+<li>
+<a href="how-it-works.html">
+How It Works
+</a>
+</li>
+
+<li>
+<a href="available-food.html">
+Available Food
+</a>
+</li>
+
+<li>
+<a href="volunteer.html">
+Volunteer
+</a>
+</li>
+
+<li>
+<a href="blog.html">
+Blog
+</a>
+</li>
+
+<li>
+<a href="contact.html">
+Contact
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h5>
+For Restaurants
+</h5>
+
+<ul>
+
+<li>
+<a href="signup.html">
+Register Your Restaurant
+</a>
+</li>
+
+<li>
+<a href="dashboard.html">
+Restaurant Dashboard
+</a>
+</li>
+
+<li>
+<a href="#">
+Donation Guidelines
+</a>
+</li>
+
+<li>
+<a href="#">
+Success Stories
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h5>
+For NGOs
+</h5>
+
+<ul>
+
+<li>
+<a href="signup.html">
+Register Your NGO
+</a>
+</li>
+
+<li>
+<a href="#">
+NGO Dashboard
+</a>
+</li>
+
+<li>
+<a href="#">
+Food Safety Guidelines
+</a>
+</li>
+
+<li>
+<a href="#">
+Resources
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h5>
+For Volunteers
+</h5>
+
+<ul>
+
+<li>
+<a href="volunteer.html">
+Become a Volunteer
+</a>
+</li>
+
+<li>
+<a href="#">
+Volunteer Dashboard
+</a>
+</li>
+
+<li>
+<a href="#">
+Guidelines
+</a>
+</li>
+
+<li>
+<a href="#">
+Rewards
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- NEWSLETTER -->
+
+<div>
+
+<h5>
+Newsletter
+</h5>
+
+<p style="font-size:12.5px;
+color:#a9bfb0;
+margin-bottom:12px;">
+
+Subscribe for updates and stories.
+
+</p>
+
+
+<div class="footer-newsletter">
+
+<input
+type="email"
+id="newsletterEmail"
+placeholder="Enter your email"
+>
+
+
+<button
+class="btn btn-green btn-block btn-sm"
+id="newsletterBtn">
+
+Subscribe
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 FoodBridge. All rights reserved.
+</span>
+
+<span>
+Privacy Policy &nbsp;|&nbsp;
+Terms &amp; Conditions &nbsp;|&nbsp;
+Food Safety Policy
+</span>
+
+<span>
+Made with ❤️ for a better tomorrow
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+</main>
+
+</div>
+
+
+
+<!-- ================= FOOD DETAILS MODAL ================= -->
+
+<div id="foodDetailsModal"
+class="food-modal-overlay">
+
+<div class="food-modal">
+
+<button
+class="food-modal-close"
+id="closeFoodModal">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+<div class="food-modal-icon">
+
+<i class="fa-solid fa-bowl-food"></i>
+
+</div>
+
+
+<h2 id="modalFoodName">
+Food Details
+</h2>
+
+<p id="modalFoodDonor"
+style="color:var(--text-soft);">
+</p>
+
+
+<div class="food-details-grid">
+
+<div>
+<span>Food Type</span>
+<b id="modalFoodType"></b>
+</div>
+
+<div>
+<span>Servings</span>
+<b id="modalFoodServings"></b>
+</div>
+
+<div>
+<span>Location</span>
+<b id="modalFoodLocation"></b>
+</div>
+
+<div>
+<span>Available Time</span>
+<b id="modalFoodTime"></b>
+</div>
+
+<div>
+<span>Time Left</span>
+<b id="modalFoodLeft"></b>
+</div>
+
+<div>
+<span>Status</span>
+<b style="color:var(--green);">
+Available
+</b>
+</div>
+
+</div>
+
+
+<div class="food-modal-actions">
+
+<button
+class="btn btn-green"
+id="requestFoodBtn">
+
+<i class="fa-solid fa-hand-holding-heart"></i>
+
+Request Food
+
+</button>
+
+
+<button
+class="btn btn-outline"
+id="modalSaveBtn">
+
+<i class="fa-regular fa-heart"></i>
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div id="foodToast"
+class="food-toast">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<span id="foodToastText">
+Success
+</span>
+
+</div>
+
+
+
+<!-- YOUR SHARED JAVASCRIPT -->
+
+<script src="smart-matching.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

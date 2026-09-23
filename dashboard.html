@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodBridge - Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="dash-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="dash-sidebar">
+
+        <a href="dashboard.html"
+           class="logo"
+           style="margin-bottom:26px;padding:0 8px;">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+
+            <div>
+                <div class="logo-text">
+                    Food<span>Bridge</span>
+                </div>
+
+                <div class="logo-tagline">
+                    Share Food, Share Hope
+                </div>
+            </div>
+
+        </a>
+
+
+        <nav class="dash-nav">
+
+            <a href="dashboard.html" class="active">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a href="dashboard-post-food.html">
+                <i class="fa-solid fa-circle-plus"></i>
+                Post Food
+            </a>
+
+            <a href="dashboard-my-donations.html">
+                <i class="fa-solid fa-box"></i>
+                My Donations
+            </a>
+
+            <a href="dashboard-requests.html">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                Requests
+            </a>
+
+            <a href="dashboard-my-pickups.html">
+                <i class="fa-solid fa-truck"></i>
+                My Pickups
+            </a>
+
+            <a href="dashboard-messages.html">
+
+                <i class="fa-solid fa-message"></i>
+
+                Messages
+
+                <span class="pill-status"
+                      style="
+                      margin-left:auto;
+                      background:var(--red);
+                      color:#fff;
+                      ">
+
+                    2
+
+                </span>
+
+            </a>
+
+            <a href="dashboard-notifications.html">
+
+                <i class="fa-solid fa-bell"></i>
+
+                Notifications
+
+            </a>
+
+            <a href="dashboard-my-impact.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                FoodBridge Impact
+
+            </a>
+
+            <a href="dashboard-available-food.html">
+
+                <i class="fa-solid fa-utensils"></i>
+
+                Available Food
+
+            </a>
+
+            <a href="dashboard-settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                Settings
+
+            </a>
+
+            <a href="dashboard-help.html">
+
+                <i class="fa-solid fa-circle-question"></i>
+
+                Help & Support
+
+            </a>
+
+        </nav>
+
+
+        <!-- Help Box -->
+
+        <div class="dash-help">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <b style="font-size:13px;">
+                Need Help?
+            </b>
+
+            <p>
+                Our support team is here to help you.
+            </p>
+
+            <button
+                class="btn btn-green btn-block btn-sm"
+                id="contactSupportBtn">
+
+                Contact Support
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dash-main">
+
+
+        <!-- ================= TOP BAR ================= -->
+
+        <div class="dash-topbar">
+
+
+            <!-- SEARCH -->
+
+            <div class="dash-search">
+
+                <i
+                    class="fa-solid fa-magnifying-glass"
+                    id="dashboardSearchBtn"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Search">
+                </i>
+
+                <input
+                    type="text"
+                    id="dashboardSearch"
+                    placeholder="Search for donations, requests, or NGOs..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <!-- NOTIFICATION -->
+
+            <div
+                class="bell-wrap icon-btn"
+                id="notificationBell">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span class="bell-dot">
+                    3
+                </span>
+
+            </div>
+
+
+            <!-- PROFILE -->
+
+            <div
+                class="dash-profile"
+                id="profileBtn">
+
+                <div class="dash-avatar">
+                    RS
+                </div>
+
+                <div>
+
+                    <b>
+                        Riya Sharma
+                    </b>
+
+                    <span>
+                        Restaurant
+                    </span>
+
+                </div>
+
+                <i
+                    class="fa-solid fa-chevron-down"
+                    style="
+                    color:var(--text-soft);
+                    font-size:11px;
+                    ">
+                </i>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="dash-content">
+
+
+            <!-- HERO -->
+
+            <div class="dash-hero">
+
+                <div>
+
+                    <span
+                        style="
+                        font-size:13px;
+                        color:#cfe0d4;
+                        ">
+
+                        Welcome back, Riya! 👋
+
+                    </span>
+
+
+                    <h2>
+
+                        Together, we can end hunger
+                        and build a
+
+                        <span style="color:#5cd66a;">
+                            better tomorrow.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Thank you for being a part of
+                        FoodBridge community.
+
+                        Your kindness is creating
+                        a real impact!
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn btn-white"
+                    onclick="
+                    location.href='dashboard-post-food.html'
+                    ">
+
+                    <i class="fa-solid fa-circle-plus"></i>
+
+                    Post Food
+
+                </button>
+
+            </div>
+
+
+            <!-- ================= STATS ================= -->
+
+            <div class="dash-stats">
+
+
+                <div class="dstat">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <div class="num">
+                        48
+                    </div>
+
+                    <div class="lbl">
+                        Total Donations
+                    </div>
+
+                    <div class="delta">
+                        +12 this month
+                    </div>
+
+                </div>
+
+
+                <div class="dstat">
+
+                    <i class="fa-solid fa-bowl-food"></i>
+
+                    <div class="num">
+                        1,248
+                    </div>
+
+                    <div class="lbl">
+                        Meals Shared
+                    </div>
+
+                    <div class="delta">
+                        +320 this month
+                    </div>
+
+                </div>
+
+
+                <div class="dstat">
+
+                    <i class="fa-solid fa-people-group"></i>
+
+                    <div class="num">
+                        3,650
+                    </div>
+
+                    <div class="lbl">
+                        People Fed
+                    </div>
+
+                    <div class="delta">
+                        +890 this month
+                    </div>
+
+                </div>
+
+
+                <div class="dstat">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    <div class="num">
+                        256
+                    </div>
+
+                    <div class="lbl">
+                        CO₂ Saved (kg)
+                    </div>
+
+                    <div class="delta">
+                        +68 this month
+                    </div>
+
+                </div>
+
+
+                <div class="dstat">
+
+                    <i class="fa-solid fa-shield"></i>
+
+                    <div class="num">
+                        98%
+                    </div>
+
+                    <div class="lbl">
+                        Success Rate
+                    </div>
+
+                    <div class="delta">
+                        Excellent
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DASHBOARD COLUMNS ================= -->
+
+            <div class="dash-cols">
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="dash-panel">
+
+                    <div class="head">
+
+                        <h4>
+                            Quick Actions
+                        </h4>
+
+                    </div>
+
+
+                    <div class="qa-grid">
+
+
+                        <div
+                            class="qa-item"
+                            id="quickPostFood">
+
+                            <i class="fa-solid fa-circle-plus"></i>
+
+                            <h5>
+                                Post Surplus Food
+                            </h5>
+
+                            <p>
+                                Share extra food with those in need
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="qa-item"
+                            id="quickRequests"
+                            style="background:#fdf2df;">
+
+                            <i
+                                class="fa-solid fa-magnifying-glass"
+                                style="color:#c9840a;">
+                            </i>
+
+                            <h5>
+                                View Requests
+                            </h5>
+
+                            <p>
+                                See food requests from
+                                NGOs & individuals
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="qa-item"
+                            id="quickPickup"
+                            style="background:#e7effa;">
+
+                            <i
+                                class="fa-solid fa-truck"
+                                style="color:#2f6fd6;">
+                            </i>
+
+                            <h5>
+                                Schedule Pickup
+                            </h5>
+
+                            <p>
+                                Arrange a pickup for your donation
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="qa-item"
+                            id="quickInvite"
+                            style="background:#efe9fb;">
+
+                            <i
+                                class="fa-solid fa-heart"
+                                style="color:#7a4fd6;">
+                            </i>
+
+                            <h5>
+                                Invite Others
+                            </h5>
+
+                            <p>
+                                Invite friends & partners to join us
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <div class="dash-panel">
+
+                    <div class="head">
+
+                        <h4>
+                            Recent Activity
+                        </h4>
+
+                        <a href="dashboard-my-donations.html">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="activity-row">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <div>
+
+                            <b>
+                                Donation completed
+                            </b>
+
+                            <span>
+                                15 meals donated to Helping Hands NGO
+                            </span>
+
+                            <br>
+
+                            <span>
+                                2 hours ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-row">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                        <div>
+
+                            <b>
+                                Pickup scheduled
+                            </b>
+
+                            <span>
+                                Tomorrow, 10:00 AM
+                            </span>
+
+                            <br>
+
+                            <span>
+                                5 hours ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-row">
+
+                        <i class="fa-solid fa-box"></i>
+
+                        <div>
+
+                            <b>
+                                New request received
+                            </b>
+
+                            <span>
+                                Education for All NGO requested food
+                            </span>
+
+                            <br>
+
+                            <span>
+                                1 day ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-row">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <div>
+
+                            <b>
+                                Donation completed
+                            </b>
+
+                            <span>
+                                20 meals donated to Care Foundation
+                            </span>
+
+                            <br>
+
+                            <span>
+                                2 days ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPCOMING PICKUPS -->
+
+                <div class="dash-panel">
+
+                    <div class="head">
+
+                        <h4>
+                            Upcoming Pickups
+                        </h4>
+
+                        <a href="dashboard-my-pickups.html">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="pickup-row">
+
+                        <div class="av">
+
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+
+                        </div>
+
+                        <div>
+
+                            <b>
+                                Helping Hands NGO
+                            </b>
+
+                            <span>
+                                Tomorrow, 10:00 AM · Connaught Place, Dehradun
+                            </span>
+
+                        </div>
+
+                        <span class="pill-status">
+                            Scheduled
+                        </span>
+
+                    </div>
+
+
+                    <div class="pickup-row">
+
+                        <div class="av">
+
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+
+                        </div>
+
+                        <div>
+
+                            <b>
+                                Care Foundation
+                            </b>
+
+                            <span>
+                                May 28, 2026 · 11:30 AM · Lajpat Nagar, Dehradun
+                            </span>
+
+                        </div>
+
+                        <span class="pill-status">
+                            Scheduled
+                        </span>
+
+                    </div>
+
+
+                    <div class="pickup-row">
+
+                        <div class="av">
+
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+
+                        </div>
+
+                        <div>
+
+                            <b>
+                                World Food Support
+                            </b>
+
+                            <span>
+                                May 30, 2026 · 09:00 AM · Saket, Dehradun
+                            </span>
+
+                        </div>
+
+                        <span class="pill-status">
+                            Confirmed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= IMPACT ================= -->
+
+            <div class="impact-strip">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <div>
+
+                    <b>
+                        Your Impact Matters!
+                    </b>
+
+                    <p
+                        style="
+                        font-size:12px;
+                        color:var(--text-soft);
+                        ">
+
+                        You have helped reduce food waste
+                        and brought smiles to many faces.
+
+                    </p>
+
+                </div>
+
+
+                <div class="nums">
+
+                    <div>
+                        <b>48</b>
+                        <span>Donations</span>
+                    </div>
+
+                    <div>
+                        <b>1,248</b>
+                        <span>Meals Shared</span>
+                    </div>
+
+                    <div>
+                        <b>3,650</b>
+                        <span>People Fed</span>
+                    </div>
+
+                    <div>
+                        <b>256 kg</b>
+                        <span>CO₂ Saved</span>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="btn btn-green btn-sm"
+                    id="viewImpactBtn">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    View FoodBridge Impact
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            <div class="wrap">
+
+                <div class="footer-grid">
+
+
+                    <div class="footer-brand">
+
+                        <div
+                            class="logo-text"
+                            style="color:#fff;">
+
+                            Food<span style="color:#5cd66a;">
+                                Bridge
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Connecting surplus food from restaurants
+                            to those who need it the most.
+                            Together, we can build a hunger-free world.
+                        </p>
+
+                        <div class="footer-socials">
+
+                            <a href="#">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5>Quick Links</h5>
+
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="how-it-works.html">How It Works</a></li>
+                            <li><a href="available-food.html">Available Food</a></li>
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5>For Restaurants</h5>
+
+                        <ul>
+                            <li><a href="signup.html">Register Your Restaurant</a></li>
+                            <li><a href="dashboard.html">Restaurant Dashboard</a></li>
+                            <li><a href="#">Donation Guidelines</a></li>
+                            <li><a href="#">Success Stories</a></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5>For NGOs</h5>
+
+                        <ul>
+                            <li><a href="signup.html">Register Your NGO</a></li>
+                            <li><a href="#">NGO Dashboard</a></li>
+                            <li><a href="#">Food Safety Guidelines</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5>For Volunteers</h5>
+
+                        <ul>
+                            <li><a href="volunteer.html">Become a Volunteer</a></li>
+                            <li><a href="#">Volunteer Dashboard</a></li>
+                            <li><a href="#">Guidelines</a></li>
+                            <li><a href="#">Rewards</a></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5>Newsletter</h5>
+
+                        <p
+                            style="
+                            font-size:12.5px;
+                            color:#a9bfb0;
+                            margin-bottom:12px;
+                            ">
+
+                            Subscribe for updates and stories.
+
+                        </p>
+
+                        <div class="footer-newsletter">
+
+                            <input
+                                id="newsletterEmail"
+                                type="email"
+                                placeholder="Enter your email">
+
+                            <button
+                                class="btn btn-green btn-block btn-sm"
+                                id="newsletterBtn">
+
+                                Subscribe
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-bottom">
+
+                    <span>
+                        © 2026 FoodBridge. All rights reserved.
+                    </span>
+
+                    <span>
+                        Privacy Policy &nbsp;|&nbsp;
+                        Terms &amp; Conditions &nbsp;|&nbsp;
+                        Food Safety Policy
+                    </span>
+
+                    <span>
+                        Made with ❤️ for a better tomorrow
+                    </span>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- Main JS -->
+<script src="app.js"></script>
+<script src="dashboard-role.js"></script>
+
+</body>
+</html>

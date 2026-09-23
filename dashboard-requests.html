@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Requests - FoodBridge</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="requests.css">
+</head>
+
+<body>
+
+<div class="dash-shell">
+
+<!-- SIDEBAR -->
+
+<aside class="dash-sidebar">
+
+<a href="index.html"
+onclick="location.href='index.html';return false;"
+class="logo"
+style="margin-bottom:26px;padding:0 8px;">
+
+<div class="logo-icon">
+<i class="fa-solid fa-seedling"></i>
+</div>
+
+<div>
+<div class="logo-text">Food<span>Bridge</span></div>
+<div class="logo-tagline">Share Food, Share Hope</div>
+</div>
+
+</a>
+
+
+<nav class="dash-nav">
+
+<a href="dashboard.html">
+<i class="fa-solid fa-house"></i> Dashboard
+</a>
+
+<a href="dashboard-post-food.html">
+<i class="fa-solid fa-circle-plus"></i> Post Food
+</a>
+
+<a href="dashboard-my-donations.html">
+<i class="fa-solid fa-box"></i> My Donations
+</a>
+
+<a href="dashboard-requests.html" class="active">
+<i class="fa-solid fa-hand-holding-heart"></i> Requests
+</a>
+
+<a href="dashboard-my-pickups.html">
+<i class="fa-solid fa-truck"></i> My Pickups
+</a>
+
+<a href="dashboard-messages.html">
+<i class="fa-solid fa-message"></i> Messages
+<span class="pill-status"
+style="margin-left:auto;background:var(--red);color:#fff;">
+2
+</span>
+</a>
+
+<a href="dashboard-notifications.html">
+<i class="fa-solid fa-bell"></i> Notifications
+</a>
+
+<a href="dashboard-my-impact.html">
+<i class="fa-solid fa-chart-line"></i> FoodBridge Impact
+</a>
+
+<a href="dashboard-available-food.html">
+<i class="fa-solid fa-utensils"></i> Available Food
+</a>
+
+<a href="dashboard-settings.html">
+<i class="fa-solid fa-gear"></i> Settings
+</a>
+
+<a href="dashboard-help.html">
+<i class="fa-solid fa-circle-question"></i> Help & Support
+</a>
+
+</nav>
+
+
+<div class="dash-help">
+
+<i class="fa-solid fa-headset"></i>
+
+<b style="font-size:13px;">Need Help?</b>
+
+<p>Our support team is here to help you.</p>
+
+<button class="btn btn-green btn-block btn-sm">
+Contact Support
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="dash-main">
+
+
+<!-- TOPBAR -->
+
+<div class="dash-topbar">
+
+<div class="dash-search">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="requestSearch"
+placeholder="Search for requests, food, or NGOs..."
+>
+
+</div>
+
+
+<div class="bell-wrap icon-btn" id="notificationBell">
+
+<i class="fa-regular fa-bell"></i>
+
+<span class="bell-dot">3</span>
+
+</div>
+
+
+<div class="dash-profile">
+
+<div class="dash-avatar">RS</div>
+
+<div>
+<b>Riya Sharma</b>
+<span>Restaurant</span>
+</div>
+
+<i class="fa-solid fa-chevron-down"
+style="color:var(--text-soft);font-size:11px;">
+</i>
+
+</div>
+
+</div>
+
+
+<!-- CONTENT -->
+
+<div class="dash-content">
+
+
+<div class="request-header">
+
+<div>
+
+<h2>Requests</h2>
+
+<p>
+Manage food requests received from NGOs and organizations.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="request-stats">
+
+<div class="request-stat">
+
+<div class="request-stat-icon">
+<i class="fa-solid fa-inbox"></i>
+</div>
+
+<div>
+<span>Total Requests</span>
+<strong>7</strong>
+</div>
+
+</div>
+
+
+<div class="request-stat">
+
+<div class="request-stat-icon pending-icon">
+<i class="fa-solid fa-clock"></i>
+</div>
+
+<div>
+<span>Pending</span>
+<strong id="pendingCount">3</strong>
+</div>
+
+</div>
+
+
+<div class="request-stat">
+
+<div class="request-stat-icon accepted-icon">
+<i class="fa-solid fa-check"></i>
+</div>
+
+<div>
+<span>Accepted</span>
+<strong>2</strong>
+</div>
+
+</div>
+
+
+<div class="request-stat">
+
+<div class="request-stat-icon completed-icon">
+<i class="fa-solid fa-circle-check"></i>
+</div>
+
+<div>
+<span>Completed</span>
+<strong>2</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FILTER -->
+
+<div class="request-toolbar">
+
+<div class="request-filters">
+
+<button class="request-filter active"
+data-filter="all">
+All
+</button>
+
+<button class="request-filter"
+data-filter="pending">
+Pending
+</button>
+
+<button class="request-filter"
+data-filter="accepted">
+Accepted
+</button>
+
+<button class="request-filter"
+data-filter="completed">
+Completed
+</button>
+
+</div>
+
+
+<select id="requestSort">
+
+<option value="newest">
+Newest First
+</option>
+
+<option value="oldest">
+Oldest First
+</option>
+
+</select>
+
+</div>
+
+
+<!-- REQUEST LIST -->
+
+<div class="request-list" id="requestList">
+
+
+<!-- REQUEST 1 -->
+
+<div class="request-card"
+data-status="pending"
+data-name="Helping Hands NGO Vegetable Biryani">
+
+<div class="request-avatar">
+HH
+</div>
+
+
+<div class="request-info">
+
+<div class="request-title">
+
+<h3>Helping Hands NGO</h3>
+
+<span class="request-status pending">
+Pending
+</span>
+
+</div>
+
+<p class="requested-food">
+<i class="fa-solid fa-utensils"></i>
+Vegetable Biryani
+</p>
+
+<p>
+<i class="fa-solid fa-box"></i>
+Requesting 10 kg • 30 servings
+</p>
+
+<p>
+<i class="fa-regular fa-calendar"></i>
+Requested on Sep 4, 2026
+</p>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="view-request"
+onclick="viewRequest('Helping Hands NGO')">
+View Details
+</button>
+
+<button
+class="accept-request"
+onclick="acceptRequest(this)">
+Accept
+</button>
+
+<button
+class="decline-request"
+onclick="declineRequest(this)">
+Decline
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REQUEST 2 -->
+
+<div class="request-card"
+data-status="pending"
+data-name="Hope Foundation Paneer Rice">
+
+<div class="request-avatar">
+HF
+</div>
+
+
+<div class="request-info">
+
+<div class="request-title">
+
+<h3>Hope Foundation</h3>
+
+<span class="request-status pending">
+Pending
+</span>
+
+</div>
+
+<p class="requested-food">
+<i class="fa-solid fa-utensils"></i>
+Paneer Rice
+</p>
+
+<p>
+<i class="fa-solid fa-box"></i>
+Requesting 8 kg • 24 servings
+</p>
+
+<p>
+<i class="fa-regular fa-calendar"></i>
+Requested on Sep 4, 2026
+</p>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="view-request"
+onclick="viewRequest('Hope Foundation')">
+View Details
+</button>
+
+<button
+class="accept-request"
+onclick="acceptRequest(this)">
+Accept
+</button>
+
+<button
+class="decline-request"
+onclick="declineRequest(this)">
+Decline
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REQUEST 3 -->
+
+<div class="request-card"
+data-status="accepted"
+data-name="Care India NGO Fresh Chapati">
+
+<div class="request-avatar">
+CI
+</div>
+
+
+<div class="request-info">
+
+<div class="request-title">
+
+<h3>Care India NGO</h3>
+
+<span class="request-status accepted">
+Accepted
+</span>
+
+</div>
+
+<p class="requested-food">
+<i class="fa-solid fa-bread-slice"></i>
+Fresh Chapati
+</p>
+
+<p>
+<i class="fa-solid fa-box"></i>
+Requesting 6 kg • 30 servings
+</p>
+
+<p>
+<i class="fa-regular fa-calendar"></i>
+Requested on Sep 3, 2026
+</p>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="view-request"
+onclick="viewRequest('Care India NGO')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REQUEST 4 -->
+
+<div class="request-card"
+data-status="completed"
+data-name="Food For All Dal Rice">
+
+<div class="request-avatar">
+FA
+</div>
+
+
+<div class="request-info">
+
+<div class="request-title">
+
+<h3>Food For All</h3>
+
+<span class="request-status completed">
+Completed
+</span>
+
+</div>
+
+<p class="requested-food">
+<i class="fa-solid fa-bowl-rice"></i>
+Dal Tadka & Rice
+</p>
+
+<p>
+<i class="fa-solid fa-box"></i>
+Requesting 12 kg • 36 servings
+</p>
+
+<p>
+<i class="fa-regular fa-calendar"></i>
+Requested on Aug 28, 2026
+</p>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="view-request"
+onclick="viewRequest('Food For All')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REQUEST 5 -->
+
+<div class="request-card"
+data-status="pending"
+data-name="Hope Foundation Mixed Vegetable Curry">
+
+<div class="request-avatar">
+HF
+</div>
+
+
+<div class="request-info">
+
+<div class="request-title">
+
+<h3>Hope Foundation</h3>
+
+<span class="request-status pending">
+Pending
+</span>
+
+</div>
+
+<p class="requested-food">
+<i class="fa-solid fa-carrot"></i>
+Mixed Vegetable Curry
+</p>
+
+<p>
+<i class="fa-solid fa-box"></i>
+Requesting 5 kg • 18 servings
+</p>
+
+<p>
+<i class="fa-regular fa-calendar"></i>
+Requested on Sep 4, 2026
+</p>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="view-request"
+onclick="viewRequest('Hope Foundation Curry')">
+View Details
+</button>
+
+<button
+class="accept-request"
+onclick="acceptRequest(this)">
+Accept
+</button>
+
+<button
+class="decline-request"
+onclick="declineRequest(this)">
+Decline
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div id="noRequests" class="no-requests">
+
+<i class="fa-solid fa-inbox"></i>
+
+<p>No requests found.</p>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="wrap">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<div class="logo-text" style="color:#fff;">
+Food<span style="color:#5cd66a;">Bridge</span>
+</div>
+
+<p>
+Connecting surplus food from restaurants to those who need it the most.
+Together, we can build a hunger-free world.
+</p>
+
+<div class="footer-socials">
+
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+<a href="#"><i class="fa-brands fa-twitter"></i></a>
+<a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+<a href="#"><i class="fa-brands fa-youtube"></i></a>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h5>Quick Links</h5>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="how-it-works.html">How It Works</a></li>
+<li><a href="available-food.html">Available Food</a></li>
+<li><a href="volunteer.html">Volunteer</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h5>For Restaurants</h5>
+
+<ul>
+
+<li><a href="signup.html">Register Your Restaurant</a></li>
+<li><a href="dashboard.html">Restaurant Dashboard</a></li>
+<li><a href="#">Donation Guidelines</a></li>
+<li><a href="#">Success Stories</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h5>For NGOs</h5>
+
+<ul>
+
+<li><a href="signup.html">Register Your NGO</a></li>
+<li><a href="#">NGO Dashboard</a></li>
+<li><a href="#">Food Safety Guidelines</a></li>
+<li><a href="#">Resources</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h5>For Volunteers</h5>
+
+<ul>
+
+<li><a href="volunteer.html">Become a Volunteer</a></li>
+<li><a href="#">Volunteer Dashboard</a></li>
+<li><a href="#">Guidelines</a></li>
+<li><a href="#">Rewards</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h5>Newsletter</h5>
+
+<p style="font-size:12.5px;color:#a9bfb0;margin-bottom:12px;">
+Subscribe for updates and stories.
+</p>
+
+<div class="footer-newsletter">
+
+<input placeholder="Enter your email">
+
+<button class="btn btn-green btn-block btn-sm">
+Subscribe
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>© 2026 FoodBridge. All rights reserved.</span>
+
+<span>
+Privacy Policy &nbsp;|&nbsp;
+Terms &amp; Conditions &nbsp;|&nbsp;
+Food Safety Policy
+</span>
+
+<span>
+Made with ❤️ for a better tomorrow
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+</main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

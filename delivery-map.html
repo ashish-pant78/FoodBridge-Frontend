@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FoodBridge Delivery Route</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+body{margin:0;background:#f5f8f5}.route-page{max-width:1100px;margin:auto;padding:24px}.card{background:#fff;border:1px solid #dfe8e1;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.06)}.head{padding:20px}.head h2{margin:0 0 6px}.head p{margin:0;color:#718078;font-size:12px}.route-info{display:flex;gap:10px;flex-wrap:wrap;padding:0 20px 18px}.route-box{flex:1;min-width:240px;padding:12px;border:1px solid #e0e9e2;border-radius:12px}.route-box small{display:block;color:#718078;font-size:10px}.route-box b{font-size:12px;display:block;margin-top:4px;line-height:1.5}#route-map{height:600px}.foot{padding:14px 20px;border-top:1px solid #e5ece7;display:flex;gap:8px;flex-wrap:wrap}.notice{margin:0 20px 18px;padding:10px 12px;border-radius:10px;background:#f1f7f2;color:#53645a;font-size:12px}.notice.error{background:#fff3f3;color:#a33b3b}.nav-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.nav-buttons a{font-size:11px;text-decoration:none}.leaflet-popup-content{font-size:12px}
+</style>
+</head>
+<body>
+<div class="route-page">
+  <div class="card">
+    <div class="head">
+      <h2>🚚 Delivery Route</h2>
+      <p>Real pickup → delivery route using Leaflet, OpenStreetMap and the free OSRM routing service.</p>
+    </div>
+    <div class="route-info">
+      <div class="route-box"><small>📦 PICKUP — RESTAURANT</small><b id="pickupText">Loading…</b><span id="pickupCoords" style="font-size:10px;color:#718078"></span><div class="nav-buttons"><a id="pickupNav" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Open pickup</a></div></div>
+      <div class="route-box"><small>🏢 DELIVERY — NGO / RECEIVER</small><b id="deliveryText">Loading…</b><span id="deliveryCoords" style="font-size:10px;color:#718078"></span><div class="nav-buttons"><a id="deliveryNav" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Open delivery</a></div></div>
+      <div class="route-box"><small>STATUS</small><b id="statusText">Loading…</b></div>
+    </div>
+    <div class="notice" id="mapNotice">Loading saved locations…</div>
+    <div id="route-map"></div>
+    <div class="foot"><button class="btn btn-outline btn-sm" onclick="history.back()">Back</button><button class="btn btn-green btn-sm" id="externalRoute" disabled>Open driving route</button></div>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+  const API=(window.FOODBRIDGE_API_BASE||'http://localhost:5000/api').replace(/\/$/,'');
+  const token=localStorage.getItem('foodbridgeToken');
+  const id=new URLSearchParams(location.search).get('pickupId');
+  const $=id=>document.getElementById(id);
+  if (typeof L === 'undefined') { $('statusText').textContent='Map library could not load.'; $('mapNotice').className='notice error'; $('mapNotice').textContent='Leaflet could not load. Check internet connection and refresh the page.'; return; }
+  const map=L.map('route-map').setView([20.5937,78.9629],5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  const layer=L.featureGroup().addTo(map);
+  function valid(a,b){return Number.isFinite(Number(a))&&Number.isFinite(Number(b))&&Number(a)>=-90&&Number(a)<=90&&Number(b)>=-180&&Number(b)<=180;}
+  function point(lat,lng){return [Number(lat),Number(lng)];}
+  async function geocode(address){
+    if(!address)return null;
+    const url='https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=in&q='+encodeURIComponent(address);
+    const r=await fetch(url,{headers:{Accept:'application/json'}});
+    if(!r.ok)return null;
+    const rows=await r.json();
+    if(!rows.length)return null;
+    return point(rows[0].lat,rows[0].lon);
+  }
+  async function route(a,b){
+    const urls=[
+      'https://router.project-osrm.org/route/v1/driving/'+a[1]+','+a[0]+';'+b[1]+','+b[0]+'?overview=full&geometries=geojson&steps=true',
+      'https://routing.openstreetmap.de/routed-car/route/v1/driving/'+a[1]+','+a[0]+';'+b[1]+','+b[0]+'?overview=full&geometries=geojson&steps=true'
+    ];
+    let lastError='Routing services unavailable';
+    for(const url of urls){
+      try{
+        const r=await fetch(url,{headers:{Accept:'application/json'}});
+        if(!r.ok){lastError='Routing service returned HTTP '+r.status;continue;}
+        const d=await r.json();
+        if(d.code==='Ok'&&d.routes&&d.routes[0]) return d.routes[0];
+        lastError='No driving route found';
+      }catch(e){ lastError=e&&e.message?e.message:'Routing request failed'; }
+    }
+    throw new Error(lastError);
+  }
+  function osmLink(p){return 'https://www.openstreetmap.org/?mlat='+p[0]+'&mlon='+p[1]+'#map=17/'+p[0]+'/'+p[1];}
+  function navLink(a,b){return 'https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route='+a[0]+','+a[1]+';'+b[0]+','+b[1];}
+  async function load(){
+    if(!id||!token){$('statusText').textContent='Login or pickup information is missing.';$('mapNotice').className='notice error';$('mapNotice').textContent='Please log in and open the map from your pickup.';return;}
+    try{
+      const r=await fetch(API+'/pickups/'+encodeURIComponent(id),{headers:{Authorization:'Bearer '+token}});
+      const d=await r.json(); if(!r.ok||!d.success)throw new Error(d.message||'Unable to load pickup');
+      const p=d.pickup||{}, donor=p.donation||{}, receiver=p.request&&p.request.receiver||{};
+      const pickupText=p.pickupLocation||donor.pickupLocation||'Pickup location not saved';
+      const deliveryText=p.deliveryLocation||receiver.location||'Delivery location not saved';
+      $('pickupText').textContent=(donor.name||'Restaurant')+' — '+pickupText;
+      $('deliveryText').textContent=(receiver.name||receiver.organization||'NGO / Receiver')+' — '+deliveryText;
+      $('statusText').textContent=String(p.status||'assigned').replace(/_/g,' ');
+      let a=valid(p.pickupLatitude,p.pickupLongitude)?point(p.pickupLatitude,p.pickupLongitude):null;
+      let b=valid(p.deliveryLatitude,p.deliveryLongitude)?point(p.deliveryLatitude,p.deliveryLongitude):null;
+      if(!a&&pickupText){$('mapNotice').textContent='Pickup coordinates missing — finding the saved pickup address on the map…';a=await geocode(pickupText);}
+      if(!b&&deliveryText){$('mapNotice').textContent='Delivery coordinates missing — finding the NGO address on the map…';b=await geocode(deliveryText);}
+      if(a){L.marker(a).addTo(layer).bindPopup('<b>📦 Pickup</b><br>'+escapeHtml(donor.name||'Restaurant')+'<br>'+escapeHtml(pickupText)).openPopup();$('pickupCoords').textContent='📍 '+a[0].toFixed(6)+', '+a[1].toFixed(6);$('pickupNav').href=osmLink(a);}
+      if(b){L.marker(b).addTo(layer).bindPopup('<b>🏢 Delivery</b><br>'+escapeHtml(receiver.name||receiver.organization||'NGO / Receiver')+'<br>'+escapeHtml(deliveryText));$('deliveryCoords').textContent='📍 '+b[0].toFixed(6)+', '+b[1].toFixed(6);$('deliveryNav').href=osmLink(b);}
+      if(a&&b){
+        map.fitBounds(L.latLngBounds([a,b]).pad(.2));
+        $('externalRoute').disabled=false;$('externalRoute').onclick=()=>window.open(navLink(a,b),'_blank','noopener');
+        try{
+          const rr=await route(a,b);
+          L.geoJSON(rr.geometry,{style:{weight:6}}).addTo(layer);
+          const km=(rr.distance/1000).toFixed(1), mins=Math.round(rr.duration/60);
+          $('mapNotice').textContent='Real road route loaded: '+km+' km • approx. '+mins+' min driving time.';
+          $('mapNotice').className='notice';
+        }catch(_){
+          L.polyline([a,b],{weight:4,dashArray:'8 8'}).addTo(layer);
+          $('mapNotice').textContent='Both locations are mapped. Live road routing services are temporarily unavailable, so a direct map line is shown; use “Open driving route” for navigation.';
+        }
+      }else{
+        $('mapNotice').className='notice error';
+        $('mapNotice').textContent='Both pickup and delivery locations need a valid address or coordinates to draw the route.';
+      }
+    }catch(e){console.error(e);$('statusText').textContent=e.message||'Unable to load pickup';$('mapNotice').className='notice error';$('mapNotice').textContent=e.message||'Unable to load pickup';}
+  }
+  function escapeHtml(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard — FoodBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--admin-green:#1d6b38;--admin-dark:#102b1a;--admin-soft:#f4f8f4;--admin-border:#e1e9e2;--admin-muted:#718076}
+body.admin-page{background:#f6f8f6;color:#17231b;font-family:Inter,Arial,sans-serif}
+.admin-wrap{max-width:1440px;margin:0 auto;padding:28px 28px 60px}
+.admin-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}
+.admin-title h1{font:800 28px Poppins;margin:0 0 5px;color:var(--admin-dark)}
+.admin-title p{margin:0;color:var(--admin-muted);font-size:13px}
+.admin-actions{display:flex;gap:9px;align-items:center}.admin-actions button{border:1px solid var(--admin-border);background:#fff;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer}.admin-actions .logout{color:#a33b3b}
+.admin-live{font-size:11px;font-weight:700;color:#287343;background:#e8f5eb;border-radius:999px;padding:7px 10px}
+.admin-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.admin-card{background:#fff;border:1px solid var(--admin-border);border-radius:14px;padding:18px;box-shadow:0 5px 18px rgba(20,50,28,.04)}.admin-card .ico{width:40px;height:40px;border-radius:10px;background:#eaf5ec;display:grid;place-items:center;color:var(--admin-green);margin-bottom:12px}.admin-card .num{font-size:27px;font-weight:800}.admin-card .label{font-size:12px;color:var(--admin-muted);margin-top:4px}.admin-card .sub{font-size:11px;color:#287343;margin-top:8px}
+.admin-section{background:#fff;border:1px solid var(--admin-border);border-radius:14px;margin-top:18px;overflow:hidden}.admin-head{padding:17px 18px;border-bottom:1px solid var(--admin-border);display:flex;align-items:center;justify-content:space-between;gap:12px}.admin-head h3{font:700 16px Poppins;margin:0}.admin-head span{font-size:11px;color:var(--admin-muted)}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:12px 14px;text-align:left;border-bottom:1px solid #edf1ed;font-size:12px;vertical-align:top}th{background:#fafcf9;color:#526056;font-size:11px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}td strong{font-size:12px}.muted{color:var(--admin-muted)}
+.badge{display:inline-block;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;text-transform:capitalize;background:#edf3ee;color:#48604f}.badge.available,.badge.completed,.badge.delivered{background:#e5f6e8;color:#236a37}.badge.pending,.badge.assigned{background:#fff3d7;color:#8b6411}.badge.rejected,.badge.cancelled,.badge.expired{background:#fde9e9;color:#9d3535}.badge.approved,.badge.accepted,.badge.picked_up,.badge.in_transit,.badge.requested{background:#e8f0ff;color:#365f9b}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.admin-section.half{margin-top:18px}.empty-admin{padding:28px;text-align:center;color:var(--admin-muted);font-size:13px}.admin-footer{display:flex;justify-content:space-between;color:#77847a;font-size:11px;margin-top:18px}
+@media(max-width:1000px){.admin-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-grid{grid-template-columns:1fr}.admin-top{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.admin-wrap{padding:20px 14px 40px}.admin-cards{grid-template-columns:1fr}.admin-title h1{font-size:23px}.admin-actions{flex-wrap:wrap}}
+</style>
+</head>
+<body class="admin-page">
+<header class="navbar"><div class="navbar-inner"><div class="logo"><div class="logo-icon"><i class="fa-solid fa-seedling"></i></div><div><div class="logo-text">Food<span>Bridge</span></div><div class="logo-tagline">Main Admin Console</div></div></div><div class="nav-right"><span class="admin-live"><i class="fa-solid fa-circle" style="font-size:7px"></i> LIVE MONGODB DATA</span><button class="btn btn-outline btn-sm" onclick="adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button></div></div></header>
+<main class="admin-wrap">
+  <div class="admin-top"><div class="admin-title"><h1>FoodBridge Main Admin Dashboard</h1><p>Complete platform monitoring — restaurants, NGOs, volunteers, donations, requests and pickups.</p></div><div class="admin-actions"><span id="lastUpdated" class="muted">Loading...</span><button onclick="loadAdminDashboard()"><i class="fa-solid fa-rotate"></i> Refresh</button></div></div>
+  <div id="cards" class="admin-cards"></div>
+  <div class="admin-section"><div class="admin-head"><h3><i class="fa-solid fa-users"></i> All Registered Users</h3><span id="userCount"></span></div><div class="table-scroll"><table><thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Phone</th><th>Organization</th><th>Location</th><th>Verified</th><th>Joined</th></tr></thead><tbody id="usersBody"></tbody></table></div></div>
+  <div class="admin-section"><div class="admin-head"><h3><i class="fa-solid fa-store"></i> Restaurant Food Posts</h3><span id="donationCount"></span></div><div class="table-scroll"><table><thead><tr><th>Restaurant</th><th>Food</th><th>Quantity</th><th>Status</th><th>Pickup Location</th><th>Posted</th></tr></thead><tbody id="donationsBody"></tbody></table></div></div>
+  <div class="admin-section"><div class="admin-head"><h3><i class="fa-solid fa-hand-holding-heart"></i> NGO Requests / Restaurant Decisions</h3><span id="requestCount"></span></div><div class="table-scroll"><table><thead><tr><th>NGO</th><th>Restaurant</th><th>Food</th><th>Requested Qty</th><th>Request Status</th><th>Food Status</th><th>Requested</th></tr></thead><tbody id="requestsBody"></tbody></table></div></div>
+  <div class="admin-section"><div class="admin-head"><h3><i class="fa-solid fa-truck"></i> Volunteer Pickup & Delivery Tracking</h3><span id="pickupCount"></span></div><div class="table-scroll"><table><thead><tr><th>Food</th><th>Restaurant</th><th>NGO</th><th>Volunteer</th><th>Quantity</th><th>Pickup Status</th><th>Pickup Location</th><th>Created</th></tr></thead><tbody id="pickupsBody"></tbody></table></div></div>
+  <div class="admin-footer"><span id="snapshotText">MongoDB snapshot</span><span>FoodBridge Main Admin • Private dashboard</span></div>
+</main>
+<script src="admin-dashboard.js"></script>
+</body>
+</html>
