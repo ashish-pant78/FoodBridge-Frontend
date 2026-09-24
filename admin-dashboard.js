@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const API='http://localhost:5000/api';
+  const API='https://foodbridge-backend-udfx.onrender.com/api';
   const token=()=>localStorage.getItem('foodbridgeToken')||'';
   const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const role=()=>{try{return String(JSON.parse(localStorage.getItem('foodbridgeCurrentUser')||'{}').role||'').toLowerCase()}catch(_){return ''}};

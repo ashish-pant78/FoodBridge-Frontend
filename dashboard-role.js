@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const API = 'http://localhost:5000/api';
+const API='https://foodbridge-backend-udfx.onrender.com/api';
   const token = () => localStorage.getItem('foodbridgeToken') || '';
   const user = () => { try { return JSON.parse(localStorage.getItem('foodbridgeCurrentUser') || '{}'); } catch (_) { return {}; } };
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
